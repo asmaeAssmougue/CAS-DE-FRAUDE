@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(images/fac.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 400px;
+    min-height: 300px;
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    padding: 30px 30px;
+}
+
+
+.container .login{
+    color: rgb(26, 231, 238);
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 10px;
+    display: block;
+    text-transform: capitalize;
+}
+
+
+.success{
+    background: #F2DEDE;
+   color: #3ac70fc5;
+   padding: 10px;
+   width: 95%;
+   border-radius: 5px;
+   margin: 20px auto;
+}
+
+.container .input-group {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 25px;
+}
+
+.container .input-group input {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #19dad0;
+    padding: 15px 20px;
+    font-size: 1rem;
+    border-radius: 30px;
+    background: transparent;
+    outline: none;
+    transition: .3s;
+    margin-top:50px;
+}
+
+.container .input-group input:focus, .container .input-group input:valid {
+    border-color: #9beffe;
+}
+.container .input-group .btn {
+    margin-top:90px;
+    display: block;
+    width: 100%;
+    padding: 10px 10px;
+    text-align: center;
+    border: none;
+    background: #0cdbe2;
+    outline: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    color: #FFF;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.container .input-group .btn:hover {
+    transform: translateY(-5px);
+    background: #5cd7e7;
+}
+@media (max-width: 430px) {
+    .container {
+        width: 300px;
+    }
+   
+}
