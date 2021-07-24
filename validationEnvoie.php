@@ -14,9 +14,24 @@ session_start();
          $nom = $_POST['nom'];
          $prenom = $_POST['prenom'];
          $filliere = $_POST['filliere'];
+         
+            switch ($filliere) {
+                case 'arabe':
+                    $filliere="قانون عربية";
+                    break;
+                case 'francais':
+                    $filliere="قانون فرنسية";
+                    break;
+                case 'economie':
+                    $filliere="اقتصاد";
+                    break;
+                default:
+                    header("Location: enregistreFraude.php?error1=choisissez une valeur valide!");
+                    exit();
+            }
          $optionF = $_POST['optionF'];
          $description = $_POST['description'];
-
+        
          $nom = addslashes(htmlspecialchars($nom));
          $prenom = addslashes(htmlspecialchars($prenom));
          $filliere = addslashes(htmlspecialchars($filliere));

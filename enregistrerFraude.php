@@ -25,6 +25,10 @@
           <div class="logo">
               <img src="images/logo.png" alt="logo">
           </div>
+          <?php if(isset($_GET['error1'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error1']; ?></p>
+            <?php } ?>
           <?php if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p>

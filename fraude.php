@@ -15,9 +15,24 @@
     }else{
       $anneeUnv=$_POST['anneeUnv'];
       $session=$_POST['session'];
+      switch ($session) {
+                case 'hiverAutomne':
+                    $session="خريف-شتاء";
+                    break;
+                case 'etePrint':
+                    $session="ربيع-صيف";
+                    break;
+               
+                default:
+                    header("Location: fraude.php?error1=choisissez une valeur valide!");
+                    exit();
+            }
       $date=$_POST['date'];
       $loginS=$_SESSION['login'];
       $numApogee=$_SESSION['numApogee'];
+      $_SESSION['session']=$session;
+      $_SESSION['anneeUnv']=$anneeUnv;
+      $_SESSION['date']=$date;
       $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','null','$numApogee')";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
@@ -63,6 +78,10 @@
           <div class="logo">
               <img src="images/logo.png" alt="logo">
           </div>
+           <?php if(isset($_GET['error1'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error1']; ?></p>
+            <?php } ?>
           <?php if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p>
