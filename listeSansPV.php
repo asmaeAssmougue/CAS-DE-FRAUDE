@@ -74,10 +74,18 @@ section {
   color: aliceblue;
   font-size: 1.2em;
 }
-table thead tr th, table tbody tr td{
+table thead tr th{
       border:1px solid #000 !important;
-      font-size:1.3em;
-      color:#000;
+      font-size:1.3em !important;
+      color:#000 !important;
+}
+table tbody tr td{
+      border:1px solid #000 !important;
+      font-size:1.3em !important;
+      color:#000 !important;
+}
+table tbody tr{
+     border:1px solid #000 !important;
 }
 @media (max-width: 430px) {
     .container {
@@ -99,7 +107,7 @@ table thead tr th, table tbody tr td{
        اجتماع المجلس التاديبي المنعقد بتاريخ <?php echo $dateC; ?> حول حالات الغش <br>
        اساءة الادب و عرقلة السير العادي للا متحانات  
   <br>
-                        <?php echo $annUniv ." ". $session; ?>   المراقبة النهائية لدورة 
+                          المراقبة النهائية لدورة <?php echo  $session." ". $annUniv; ?>
    
 
   <br>
@@ -113,7 +121,7 @@ table thead tr th, table tbody tr td{
 
 </p>
     <table class="table table-bordered">
-     <thead>
+     <thead class="border border-dark">
     <tr>
       <th scope="col">طبيعة الغش</th>
       <th scope="col">المسلك</th>
@@ -140,7 +148,7 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
               while($row=mysqli_fetch_assoc($reslt1)){
 
     ?>
-  <tbody>
+  <tbody class="border border-dark">
    
     <tr>
       <td scope="row"><?php echo $row['description']; ?></td>
