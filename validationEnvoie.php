@@ -23,7 +23,7 @@ session_start();
          $optionF = addslashes(htmlspecialchars($optionF));
          $description = addslashes(htmlspecialchars($description));
          $loginR=$_SESSION['login'];
-        
+         $_SESSION['numApogee']=$numApogee;
         $sql0 = "INSERT INTO `etudiant`(`numApogee`, `numEtd`, `nom`, `prenom`, `filliere`, `optionFill`) VALUES ('$numApogee','$numEtd','$nom','$prenom','$filliere','$optionF')";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){

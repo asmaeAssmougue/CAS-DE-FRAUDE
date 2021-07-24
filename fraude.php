@@ -2,7 +2,46 @@
  
  include("connexion.php");
  session_start();
+ if(isset($_GET['id'])){
+   $main_id = $_GET['id'];
+   $sql2 = "UPDATE `notification` SET `status`='1' WHERE id = '$main_id'";
+  $reslt2 = mysqli_query($link, $sql2);
 
+  if(isset($_POST['submit'])){
+    if(empty($_POST['anneeUnv'])||empty($_POST['session'])||empty($_POST['date'])){
+    
+        header("Location: fraude.php?error=veuillez remplir tous les champs");
+        exit(); 
+    }else{
+      $anneeUnv=$_POST['anneeUnv'];
+      $session=$_POST['session'];
+      $date=$_POST['date'];
+      $loginS=$_SESSION['login'];
+      $numApogee=$_SESSION['numApogee'];
+      $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','null','$numApogee')";
+        $reslt0 = mysqli_query($link,$sql0);
+        if(!$reslt0){
+            
+            header("Location: fraude.php?inscrire=une erreur est produite lors de l'insertion reessayez");
+            exit();
+        }
+        else{
+             $sql3 = "UPDATE `fraude` SET `anneeUniversitaire`='$anneeUnv',`session`='$session' WHERE numApogee = '$numApogee'";
+             $reslt3 = mysqli_query($link, $sql3);
+             if(!$reslt3){
+            
+            header("Location: fraude.php?update=une erreur est produite lors de l'insertion reessayez");
+            exit();
+        }
+        else{
+            header("Location: listeSansPV.php?success=1");
+            exit();
+        }
+        }
+    }
+  }
+ }
+  
 ?>
 
 <!doctype html>
@@ -20,7 +59,7 @@
   </head>
   <body>
     <div class="container">
-        <form action="listeSansPV.php" method="POST" class="fraude">
+        <form action="" method="POST" class="fraude">
           <div class="logo">
               <img src="images/logo.png" alt="logo">
           </div>
@@ -28,7 +67,14 @@
           
           <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>
-
+           <?php if(isset($_GET['inscrire'])){ ?>
+          
+          <p class="error"><?php echo $_GET['inscrire']; ?></p>
+            <?php } ?>
+             <?php if(isset($_GET['update'])){ ?>
+          
+          <p class="error"><?php echo $_GET['update']; ?></p>
+            <?php } ?>
             
 
              <?php if(isset($_GET['success'])){ ?>
