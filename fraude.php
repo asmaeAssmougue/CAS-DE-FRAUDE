@@ -33,7 +33,7 @@
       $_SESSION['session']=$session;
       $_SESSION['anneeUnv']=$anneeUnv;
       $_SESSION['date']=$date;
-      $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','null','$numApogee')";
+      $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','الملف في طور المعالجة','$numApogee')";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
             

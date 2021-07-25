@@ -68,7 +68,17 @@ section {
   margin-right: 30px !important;
   width: 220px !important;
 }
-
+.btn-primary{
+  border-radius: 20px !important;
+  
+  border: 0 !important;
+  margin-right: 30px !important;
+  width: 150px !important;
+  height:40px !important;
+  position:relative !important;
+  left:-260px !important;
+  margin-bottom:20px !important;
+}
 .btn-info a {
   text-decoration: none;
   color: aliceblue;
@@ -165,8 +175,8 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
     }
     ?>
 </table>
-      <div>
-       
+      <div class="text-center" >
+       <button onclick="window.print();" class="btn btn-primary">طبع</button>
       
       </div>
     </section>
