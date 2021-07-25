@@ -33,6 +33,10 @@
       $_SESSION['session']=$session;
       $_SESSION['anneeUnv']=$anneeUnv;
       $_SESSION['date']=$date;
+      setcookie('session', $session, time() + 365*24*3600, '/', '.listeFraudePV');
+     
+     setcookie('anneeUnv', $anneeUnv, time() + 365*24*3600, '/', '/.listeFraudePV/');
+     setcookie('date', $date, time() + 365*24*3600, '/', '/.listeFraudePV/');
       $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','الملف في طور المعالجة','$numApogee')";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
