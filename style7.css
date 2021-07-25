@@ -118,6 +118,15 @@ label {
   margin: 20px auto;
   font-size: 1.4em;
 }
+.container .ajouPV .succes btn {
+  color: #fff !important;
+  width: 40% !important;
+  border-radius: 40% !important;
+}
+.container .ajouPV .succes btn a {
+  color: #fff !important;
+  text-decoration: none;
+}
 .container .text {
   margin-top: 10px;
   margin-bottom: 40px;

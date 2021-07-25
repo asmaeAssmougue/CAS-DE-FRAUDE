@@ -17,7 +17,7 @@
            exit();
        }
        else{
-          header("Location: listeFraudePV.php?succes=1");
+          header("Location: AjouterPV.php?succes=le proces verbal est ajouté avec succes!");
            exit();
        }
   }
@@ -51,6 +51,11 @@
             <?php if(isset($_GET['update'])){ ?>
           
           <p class="error"><?php echo $_GET['update']; ?></p>
+            <?php } ?>
+
+             <?php if(isset($_GET['succes'])){ ?>
+          
+          <p class="succes"><?php echo $_GET['succes']; ?>   <button type="submit" class="btn btn-outline-primary"><a href="listeFraudePV.php">voir la liste</a></button></p>
             <?php } ?>
           <div class="input-group" style="display:flex; flex-direction: row;">
               <label for="numApogee" style="position:relative; left:370px;">:رقم الطالب</label>
