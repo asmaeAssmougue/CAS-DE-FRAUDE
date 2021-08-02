@@ -1,65 +1,55 @@
 <?php
- 
+
  include("connexion.php");
  session_start();
  if(isset($_GET['id'])){
-   $main_id = $_GET['id'];
-   $sql2 = "UPDATE `notification` SET `status`='1' WHERE id = '$main_id'";
+   $mainid = $_GET['id'];
+   $sql2 = "UPDATE `notification` SET `status`='1' WHERE id = '$mainid'";
   $reslt2 = mysqli_query($link, $sql2);
 
   if(isset($_POST['submit'])){
-    if(empty($_POST['anneeUnv'])||empty($_POST['session'])||empty($_POST['date'])){
+    if(empty($_POST['date'])){
     
-        header("Location: fraude.php?error=veuillez remplir tous les champs");
+        header("Location: fraude.php?error=المرجو ملىء جميع الخانات");
         exit(); 
     }else{
-      $anneeUnv=$_POST['anneeUnv'];
-      $session=$_POST['session'];
-      switch ($session) {
-                case 'hiverAutomne':
-                    $session="خريف-شتاء";
-                    break;
-                case 'etePrint':
-                    $session="ربيع-صيف";
-                    break;
-               
-                default:
-                    header("Location: fraude.php?error1=choisissez une valeur valide!");
-                    exit();
-            }
-      $date=$_POST['date'];
+        $query="SELECT * FROM `notification` WHERE id='$mainid';";
+        $resultQ=mysqli_query($link, $query);
+        if(!$resultQ){
+              header('Location: fraude.php?recupId=حدث خطأ أثناء ، حاول مرة أخرى');
+              exit();
+        }
+        else{
+          if($dataQ=mysqli_fetch_assoc($resultQ)){
+                $numApogee=$dataQ['numApogee'];
+                
+                $date=addslashes(htmlspecialchars($_POST['date']));
       $loginS=$_SESSION['login'];
-      $numApogee=$_SESSION['numApogee'];
-      $_SESSION['session']=$session;
-      $_SESSION['anneeUnv']=$anneeUnv;
       $_SESSION['date']=$date;
-      setcookie('session', $session, time() + 365*24*3600, '/', '.listeFraudePV');
-     
-     setcookie('anneeUnv', $anneeUnv, time() + 365*24*3600, '/', '/.listeFraudePV/');
-     setcookie('date', $date, time() + 365*24*3600, '/', '/.listeFraudePV/');
+    
       $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','الملف في طور المعالجة','$numApogee')";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
             
-            header("Location: fraude.php?inscrire=une erreur est produite lors de l'insertion reessayez");
+            header("Location: fraude.php?inscrire=حدث خطأ أثناء الإدراج ، حاول مرة أخرى");
             exit();
         }
         else{
-             $sql3 = "UPDATE `fraude` SET `anneeUniversitaire`='$anneeUnv',`session`='$session' WHERE numApogee = '$numApogee'";
-             $reslt3 = mysqli_query($link, $sql3);
-             if(!$reslt3){
-            
-            header("Location: fraude.php?update=une erreur est produite lors de l'insertion reessayez");
+             
+           $_SESSION['numApogee']=$numApogee;
+            header("Location: listeSansPV.php?id=$numApogee");
             exit();
+        
         }
-        else{
-            header("Location: listeSansPV.php?success=1");
-            exit();
+    
+          }
         }
-        }
-    }
+      //$numApogee=$_SESSION['numApogee'];
+      
   }
- }
+  }
+}
+ 
   
 ?>
 
@@ -80,8 +70,16 @@
     <div class="container">
         <form action="" method="POST" class="fraude">
           <div class="logo">
-              <img src="images/logo.png" alt="logo">
+                  <img src="images/logo3.png" alt="logo">
           </div>
+           <?php if(isset($_GET['fraudeSave'])){ ?>
+          
+          <p class="error"><?php echo $_GET['fraudeSave']; ?></p>
+            <?php } ?>
+          <?php if(isset($_GET['recupId'])){ ?>
+          
+          <p class="error"><?php echo $_GET['recupId']; ?></p>
+            <?php } ?>
            <?php if(isset($_GET['error1'])){ ?>
           
           <p class="error"><?php echo $_GET['error1']; ?></p>
@@ -105,36 +103,19 @@
           <p class="succes"><?php echo $_GET['success']; ?></p>
             <?php } ?>
 
-           <div class="input-group" style="display:flex; flex-direction: row;">
-
-               <label for="anneeUnv" style="position:relative; left:350px;">:السنة الجامعية</label>
-               <input type="text" name="anneeUnv" id="anneeUnv" value="<?php 
-        
-           echo (isset($row['anneeUniversitaire'])) ? $row['anneeUniversitaire'] : '';
-         ?>" >
-           </div>
-             <div class="input-group" style="display:flex; flex-direction: row;">
-
-               <label for="session" style="position:relative; left:390px;">:الدورة</label>
-               <select name="session" class="form-select">
-                  <option value="hiverAutomne" >خريف-شتاء</option>
-                  <option value="etePrint">ربيع-صيف</option>
-                  
-            </select>
-           </div>
+         
+           
              <div class="input-group" style="display:flex; flex-direction: row;">
 
                <label for="date" style="position:relative; left:350px;">:تاريخ الجلسة</label>
-               <input type="text" name="date" id="date" value="<?php 
-        
-                echo (isset($row['date'])) ? $row['date'] : '';
-         ?>" >
+               <input type="text" name="date" id="date">
            </div>
                 
 
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">حفظ</button>
-               <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >الغاء</button>
+               <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >إلغاء</button>
+                <button type="submit" class="btn btn-primary"><a href="modifierFraude.php">رجوع</a></button>
            </div>
            
            
@@ -142,10 +123,6 @@
     </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
   </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 session_start();
-include ('connexion.php');    
+include ('connexion.php');   
+
 if(isset($_POST['submit'])){
     if(isset($_POST['email']) && isset($_POST['password'])){
     function validate($data){
@@ -13,10 +14,10 @@ if(isset($_POST['submit'])){
 $email = validate($_POST['email']);
 $pass = validate($_POST['password']);
 if(empty($email)){
-    header("Location: connexionResponsable.php?error=email is required");
+    header("Location: connexionResponsable.php?error=الرجاء إدخال اسم المستخدم");
     exit();
 }else if(empty($pass)){
-    header("Location: connexionResponsable.php?error=password is required");
+    header("Location: connexionResponsable.php?error1=من فضلك أدخل رقمك السري");
     exit();
 }else{ 
     $sql = "SELECT * FROM `responsablebureauexam` WHERE login ='$email' AND password = '$pass'";
@@ -27,18 +28,24 @@ if(empty($email)){
             $_SESSION['password'] = $row['password'];
            
             $_SESSION['login'] = $row['login'];
-            header("Location: enregistrerFraude.php?succes=1");
+            header("Location: enregistrerFraude.php?succes= مرحبًا بك ");
             exit();
         }
         }
     else{
-           header("Location: connexionResponsable.php?error=the password or login is incorrect!!");
+           header("Location: connexionResponsable.php?error2=كلمة السر أو اسم المستخدم غير صحيحة");
            exit();
            
         }
     }
     
 }
+}
+else{
+    if(isset($_POST['retour'])){
+        header('Location: acceuil.php?success=1');
+        exit();
+    }
 }
 
 ?>
@@ -61,23 +68,33 @@ if(empty($email)){
           
           <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>
+            <?php if(isset($_GET['error1'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error1']; ?></p>
+            <?php } ?>
+            <?php if(isset($_GET['error2'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error2']; ?></p>
+            <?php } ?>
            <div class="input-group">
-               <input type="email" name="email" placeholder="Email" required="required">
+               <input type="text" name="email" placeholder="username" required="required">
            </div>
            <div class="input-group">
                <input type="password" placeholder="Password" name="password" required="required">
            </div>
            <div class="input-group">
                <button name="submit" class="btn">Login</button>
+              
            </div>
            <?php
            if(isset($_GET["newpwd"])){
                if($_GET["newpwd"] == "passwordupdated"){
-                   echo '<p class="success">Your password has been reset!</p>';
+                   echo '<p class="success">تم إعادة تعيين كلمة المرور الخاصة بك</p>';
                }
            }
            ?>
-           <p class="forgetP"><a href="resetPasswordR.php">Forget your password ?</a></p>
+           <p class="forgetP"><a href="resetPasswordR.php">نسيت كلمة المرور ؟</a></p>
+                <p class="forgetP"><a href="acceuil.php">خروج</a></p>
          </form>
      </div>
 </body>

@@ -13,10 +13,11 @@ if(isset($_POST['submit'])){
 $email = validate($_POST['email']);
 $pass = validate($_POST['password']);
 if(empty($email)){
-    header("Location: connexionSecretaire.php?error=email is required");
+  
+    header("Location: connexionSecretaire.php?error=الرجاء إدخال اسم المستخدم");
     exit();
 }else if(empty($pass)){
-    header("Location: connexionSecretaire.php?error=password is required");
+    header("Location: connexionSecretaire.php?error1=من فضلك أدخل رقمك السري");
     exit();
 }else{ 
     $sql = "SELECT * FROM `secretaire` WHERE login ='$email' AND password = '$pass'";
@@ -32,7 +33,7 @@ if(empty($email)){
         }
         }
     else{
-           header("Location: connexionSecretaire.php?error=the password or login is incorrect!!");
+             header("Location: connexionSecretaire.php?error2=كلمة السر أو اسم المستخدم غير صحيحة");
            exit();
 
         }
@@ -61,8 +62,16 @@ if(empty($email)){
           
           <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>
+            <?php if(isset($_GET['error1'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error1']; ?></p>
+            <?php } ?>
+            <?php if(isset($_GET['error2'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error2']; ?></p>
+            <?php } ?>
            <div class="input-group">
-               <input type="email" name="email" placeholder="Email" required="required">
+               <input type="text" name="email" placeholder="username" required="required">
            </div>
            <div class="input-group">
                <input type="password" placeholder="Password" name="password" required="required">
@@ -73,11 +82,12 @@ if(empty($email)){
            <?php
            if(isset($_GET["newpwd"])){
                if($_GET["newpwd"] == "passwordupdated"){
-                   echo '<p class="success">Your password has been reset!</p>';
+                    echo '<p class="success">تم إعادة تعيين كلمة المرور الخاصة بك</p>';
                }
            }
            ?>
-           <p class="forgetP"><a href="resetPasswordR.php">Forget your password ?</a></p>
+           <p class="forgetP"><a href="resetPasswordR.php">نسيت كلمة المرور ؟</a></p>
+            <p class="forgetP"><a href="acceuil.php">خروج</a></p>
          </form>
      </div>
 </body>

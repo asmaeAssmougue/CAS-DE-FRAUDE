@@ -16,14 +16,14 @@ session_start();
     <section class="container">
       
       
-      <form action="" method="post">
+      <form action="send_link.php" method="post">
           <h1  class="login">Reset your password</h1>
           <p>An e-mail will be send to you with instructions on how to reset password</p>
           <div class="input-group">
                  <input type="email" name="email" placeholder="Enter your e-mail address..">
           </div>
           <div class="input-group">
-               <button  name="reset-request-submit"  class="btn">Receive new password by e-mail</button>
+               <button  name="submit_email"  class="btn">Receive new password by e-mail</button>
            </div>
       </form>
        <?php

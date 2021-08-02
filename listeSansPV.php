@@ -2,11 +2,8 @@
  
  include("connexion.php");
  session_start();
-  $session=$_SESSION['session'];
-  $annUniv=$_SESSION['anneeUnv'];
-  $dateC=$_SESSION['date'];
-    
-
+ $dateC=$_SESSION['date'];
+ $numApogee = $_SESSION['numApogee'];
 ?>
 
 <!doctype html>
@@ -40,17 +37,27 @@ section {
   margin-top: 10px;
   text-align: center;
 }
-
+.error {
+  background: #f2dede;
+  color: #a94442;
+  padding: 10px 10px 10px 20px;
+  width: 95%;
+  border-radius: 5px;
+  margin: 20px auto;
+  text-align: right;
+  font-size:1.1em;
+}
 #logo {
   position: absolute;
-  left: 220px;
+  /*left: 150px;
   top: 0px;
-  width: 80%;
-  height: 597px;
+  /*width: 80%;*/
+  height: 500px;
   margin-bottom:40px;
+  text-align:center;
 }
 .p {
-  padding-top: 130px;
+  padding-top: 180px;
   width: 70%;
   margin: auto;
   text-align: center;
@@ -79,6 +86,11 @@ section {
   left:-260px !important;
   margin-bottom:20px !important;
 }
+.btn-primary a {
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 1.2em;
+}
 .btn-info a {
   text-decoration: none;
   color: aliceblue;
@@ -103,25 +115,44 @@ table tbody tr{
     }
    
 }
+@media print {
+  #printPageButton {
+    display: none;
+  }
+  #retour {
+    display: none;
+  }
+  @page { size: landscape; }
+}
     </style>
   </head>
   <body>
     <div class="container">
           <div id="logo">
-              <img src="images/logo.png" alt="logo">
+              <img src="images/logo2.jpg" alt="logo" width="1000px;">
           </div>
                 
 
            <section>
+
       <p class="p">
-       اجتماع المجلس التاديبي المنعقد بتاريخ <?php echo $dateC; ?> حول حالات الغش <br>
-       اساءة الادب و عرقلة السير العادي للا متحانات  
+        <?php 
+        $sql2="SELECT * FROM `fraude` WHERE numApogee = '$numApogee';";
+        $reslt2=mysqli_query($link, $sql2);
+          
+        if($row2=mysqli_fetch_assoc($reslt2)){
+        $annUniv=$row2['anneeUniversitaire'];
+        $session=$row2['session'];
+  
+        ?>
+       اجتماع المجلس التأديبي المنعقد بتاريخ <?php echo $dateC; ?> حول حالات الغش <br>
+       إساءة الأدب و عرقلة السير العادي للا متحانات  
   <br>
                           المراقبة النهائية لدورة <?php echo  $session." ". $annUniv; ?>
    
 
   <br>
-طبقا للمرسوم رقم 2.06.619 الصادر في 28 من شوال 28/1429 اكتوبر 2008 المتعلق بالمجلس التاديبي الخاص بالطلبة
+طبقا للمرسوم رقم 2.06.619 الصادر في 28 من شوال 28/1429 أكتوبر 2008 المتعلق بالمجلس التأديبي الخاص بالطلبة
     
  (الجريدة الرسمية5681)
     <br>
@@ -130,20 +161,10 @@ table tbody tr{
         
 
 </p>
-    <table class="table table-bordered">
-     <thead class="border border-dark">
-    <tr>
-      <th scope="col">طبيعة الغش</th>
-      <th scope="col">المسلك</th>
-      <th scope="col">ر.ط</th>
-      <th scope="col">الاسم و النسب</th>
-       <th scope="col">الرقم</th>
-      
-    </tr>
-  </thead>
+  
    <?php
         
-      $sql1="SELECT etudiant.numApogee, etudiant.numEtd, etudiant.nom, etudiant.prenom, etudiant.filliere, etudiant.optionFill, fraude.idFraude, fraude.description, fraude.anneeUniversitaire, fraude.session, fraude.loginR, conseildiscipline.idConseil, conseildiscipline.loginS, conseildiscipline.date, conseildiscipline.PV
+      $sql1="SELECT etudiant.numApogee, etudiant.numEtd, etudiant.nom, etudiant.prenom, etudiant.filliere, etudiant.semestre, fraude.idFraude, fraude.description, fraude.anneeUniversitaire, fraude.session, fraude.loginR, conseildiscipline.idConseil, conseildiscipline.loginS, conseildiscipline.date, conseildiscipline.PV
 FROM etudiant 
 INNER JOIN conseildiscipline ON conseildiscipline.numApogee = etudiant.numApogee 
 INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
@@ -151,10 +172,31 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
       ORDER BY fraude.idFraude ASC;";
           $reslt1=mysqli_query($link, $sql1);
           if(!$reslt1){
-              header("Location: listeSansPV.php?error=une erreur est produite lors de l'insertion reessayez");
+              header("Location: fraude.php?error1=هناك مشكلة ، حاول مرة أخرى");
               exit();
           }
           else{
+            if(mysqli_num_rows($reslt1)==0){
+              header("Location: fraude.php?error=المعلومات غير صحيحة ، يرجى المحاولة مرة أخرى");
+              exit();
+            }
+            else{
+            ?>
+           
+                 <table class="table table-bordered">
+                   <thead class="border border-dark">
+                      <tr>
+                        
+                        <th scope="col" style="width: 400px">طبيعة الغش</th>
+                        <th scope="col" style="width: 360px">المسلك</th>
+                        <th scope="col">ر.ط</th>
+                        <th scope="col" style="width: 250px">الاسم و النسب</th>
+                        <th scope="col">الرقم</th>
+                        
+                      </tr>
+                    </thead>
+
+            <?php
               while($row=mysqli_fetch_assoc($reslt1)){
 
     ?>
@@ -173,10 +215,17 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
         <?php 
       }
     }
+  }
     ?>
 </table>
       <div class="text-center" >
-       <button onclick="window.print();" class="btn btn-primary">طبع</button>
+         <?php if(isset($_GET['error'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error']; ?></p>
+            <?php } ?>
+           
+       <button onclick="window.print();" class="btn btn-primary" id="printPageButton">طبع</button>
+       <button type="submit" class="btn btn-primary"><a href="modifierFraude.php" id="retour">خروج</a></button>
       
       </div>
     </section>
@@ -186,10 +235,8 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
     </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
   </body>
+  
 </html>
+<?php } ?>

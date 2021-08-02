@@ -7,11 +7,11 @@
   if(isset($_POST['submit'])){
     if(empty($_POST['anneeUnv'])||empty($_POST['session'])||empty($_POST['date'])){
     
-        header("Location: listeFraudePV.php?error=veuillez remplir tous les champs");
+        header("Location: listeFraudePV.php?error=المرجو ملىء  جميع الخانات");
         exit(); 
     }else{
-      $anneeUnv=$_POST['anneeUnv'];
-      $session=$_POST['session'];
+      $anneeUnv=addslashes(htmlspecialchars($_POST['anneeUnv']));
+      $session=addslashes(htmlspecialchars($_POST['session']));
       switch ($session) {
                 case 'hiverAutomne':
                     $session="خريف-شتاء";
@@ -21,16 +21,16 @@
                     break;
                
                 default:
-                    header("Location: listeFraudePV.php?error1=choisissez une valeur valide!");
+                    header("Location: listeFraudePV.php?error1=المرجو الاختيار من الائحة");
                     exit();
             }
-      $date=$_POST['date'];
+      $date=addslashes(htmlspecialchars($_POST['date']));
       $loginS=$_SESSION['login'];
-      $numApogee=$_SESSION['numApogee'];
+    
       $_SESSION['session']=$session;
       $_SESSION['anneeUnv']=$anneeUnv;
       $_SESSION['date']=$date;
-      header('Location: listeFraudePV.php?succes=1');
+      header('Location: listeAvecPV.php?succes=1');
       exit();
 
       

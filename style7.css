@@ -53,7 +53,6 @@ body {
   width: 100% !important;
   height: 100% !important;
   border: 2px solid #a09797 !important;
-  padding: 15px 20px !important;
   font-size: 1rem !important;
   border-radius: 10px !important;
   background: transparent !important;
@@ -63,8 +62,8 @@ body {
 
 .container .fraude .input-group .btn {
   display: inline-block;
-  width: 40%;
-  padding: 15px 20px;
+  width: 30%;
+  padding: 10px 20px;
   text-align: center;
   border: 1px solid #448ce9;
   outline: none;
@@ -75,7 +74,11 @@ body {
   transition: 0.3s;
   margin-right: 5px;
 }
-
+.container .fraude .input-group .btn a {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-size: 1em !important;
+}
 .container .fraude .input-group .btn:hover {
   transform: translateY(-5px);
 }
@@ -86,6 +89,7 @@ body {
   width: 95%;
   border-radius: 5px;
   margin: 20px auto;
+  text-align: right;
 }
 .logo {
   position: relative;
@@ -117,6 +121,7 @@ label {
   border-radius: 5px;
   margin: 20px auto;
   font-size: 1.4em;
+  text-align: right;
 }
 .container .ajouPV .succes btn {
   color: #fff !important;
@@ -141,7 +146,7 @@ label {
 }
 .container .ajouPV .input-group .btn {
   display: inline-block !important;
-  width: 40% !important;
+  width: 30% !important;
   padding: 15px 20px !important;
   text-align: center !important;
   border: 1px solid #448ce9;
@@ -153,21 +158,58 @@ label {
   transition: 0.3s !important;
   margin-right: 5px !important;
 }
+.container .ajouPV .input-group .btn a {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-size: 1em !important;
+}
 .container .ajouPV .input-group select {
   width: 100% !important;
   height: 100% !important;
   border: 2px solid #a09797 !important;
-  padding: 15px 20px !important;
-  font-size: 1rem !important;
+  font-size: 1em !important;
   border-radius: 10px !important;
   background: transparent !important;
   outline: none !important;
   transition: 0.3s !important;
 }
+.container .ajouPV .input-group input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #a09797;
+  padding: 15px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  background: transparent;
+  outline: none;
+  transition: 0.3s;
+}
 .container .ajouPV .input-group .btn:hover {
   transform: translateY(-5px) !important;
 }
+.container .ajouPV .text {
+  margin-top: 10px;
+  /*margin-bottom: 40px;*/
+}
+.container .ajouPV .text textarea {
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  width: 100%;
+  border: 2px solid #a09797;
+  padding: 10px 10px;
+}
+a{
+    color: #070707;
+    text-decoration: none;
+    background-color: transparent;
+  
+}
+a:hover{
+  color: #070707;
+    text-decoration: none;
 
+}
 @media (max-width: 430px) {
   .container {
     width: 300px;

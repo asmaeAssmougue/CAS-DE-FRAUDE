@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 24 juil. 2021 à 06:05
+-- Généré le : lun. 02 août 2021 à 20:42
 -- Version du serveur : 10.4.19-MariaDB
 -- Version de PHP : 8.0.7
 
@@ -30,10 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `conseildiscipline` (
   `idConseil` int(11) NOT NULL,
   `loginS` varchar(50) NOT NULL,
-  `date` varchar(50) NOT NULL,
+  `date` varchar(250) NOT NULL,
   `PV` text NOT NULL,
   `numApogee` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `conseildiscipline`
+--
+
+INSERT INTO `conseildiscipline` (`idConseil`, `loginS`, `date`, `PV`, `numApogee`) VALUES
+(57, 'assmougue', '30/07/2021', 'إلغاء نتائج دورة خريف -شتاء', 7788888),
+(58, 'assmougue', '12/9/2021', 'الملف في طور المعالجة', 7799999),
+(59, 'assmougue', '02/08/2021', 'الملف في طور المعالجة', 77444444);
 
 -- --------------------------------------------------------
 
@@ -66,11 +75,21 @@ CREATE TABLE `envoyerrapport` (
 CREATE TABLE `etudiant` (
   `numApogee` int(11) NOT NULL,
   `numEtd` int(11) NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
-  `filliere` varchar(50) NOT NULL,
-  `optionFill` text NOT NULL
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
+  `filliere` text NOT NULL,
+  `semestre` text NOT NULL,
+  `CNE_CIN` varchar(250) NOT NULL DEFAULT '---------------'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`numApogee`, `numEtd`, `nom`, `prenom`, `filliere`, `semestre`, `CNE_CIN`) VALUES
+(7788888, 1, 'اسبي', 'اسية', 'Economie des Territoires', 'خريف-شتاء', '---------------'),
+(7799999, 2, 'اسموك', 'هبة', 'Licence D\'études Fondamentales D\'exellence en Sciences de Gestion', 's7', '---------------'),
+(77444444, 3, 'اسموك', 'اسماء', 'Licence D\'études Fondamentales D\'exellence en Sciences de Gestion', 'س9', '---------------');
 
 -- --------------------------------------------------------
 
@@ -81,11 +100,20 @@ CREATE TABLE `etudiant` (
 CREATE TABLE `fraude` (
   `idFraude` int(11) NOT NULL,
   `description` text NOT NULL,
-  `anneeUniversitaire` varchar(50) NOT NULL,
+  `anneeUniversitaire` varchar(250) NOT NULL,
   `session` text NOT NULL,
   `loginR` varchar(50) NOT NULL,
   `numApogee` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `fraude`
+--
+
+INSERT INTO `fraude` (`idFraude`, `description`, `anneeUniversitaire`, `session`, `loginR`, `numApogee`) VALUES
+(83, 'محاولة الغش بواسطة الهاتف المحمول مشغل دون وضعه في محفظتها ', '2020/2021', 'خريف-شتاء', 'assmougue', 7788888),
+(84, 'استعمال ورقة', '2021/2022', 'خريف-شتاء', 'assmougue', 7799999),
+(85, 'استعمال السماعات', '2021/2022', 'ربيع-صيف', 'assmougue', 77444444);
 
 -- --------------------------------------------------------
 
@@ -99,6 +127,15 @@ CREATE TABLE `notification` (
   `status` int(2) NOT NULL DEFAULT 0,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `notification`
+--
+
+INSERT INTO `notification` (`id`, `numApogee`, `status`, `date`) VALUES
+(73, 7788888, 1, '2021-08-02 07:02:53'),
+(74, 7799999, 1, '2021-08-02 07:03:46'),
+(75, 77444444, 1, '2021-08-02 07:04:27');
 
 -- --------------------------------------------------------
 
@@ -122,7 +159,7 @@ CREATE TABLE `pwdreset` (
 
 CREATE TABLE `responsablebureauexam` (
   `login` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -130,8 +167,8 @@ CREATE TABLE `responsablebureauexam` (
 --
 
 INSERT INTO `responsablebureauexam` (`login`, `password`) VALUES
-('asmae.assmougue@gmail.com', 'azerty0123456789'),
-('nom.prenom@gmail.com', 'responsable0123456789');
+('assmougue', 'azerty0123456789'),
+('username', 'responsable0123456789');
 
 -- --------------------------------------------------------
 
@@ -141,7 +178,7 @@ INSERT INTO `responsablebureauexam` (`login`, `password`) VALUES
 
 CREATE TABLE `secretaire` (
   `login` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -149,8 +186,8 @@ CREATE TABLE `secretaire` (
 --
 
 INSERT INTO `secretaire` (`login`, `password`) VALUES
-('asmae.assmougue@gmail.com', 'azerty0123456789'),
-('nom.prenom@um5.ac.ma', 'secretaire0123456789');
+('assmougue', 'azerty0123456789'),
+('username', 'secretaire0123456789');
 
 --
 -- Index pour les tables déchargées
@@ -227,19 +264,19 @@ ALTER TABLE `secretaire`
 -- AUTO_INCREMENT pour la table `conseildiscipline`
 --
 ALTER TABLE `conseildiscipline`
-  MODIFY `idConseil` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idConseil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT pour la table `fraude`
 --
 ALTER TABLE `fraude`
-  MODIFY `idFraude` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idFraude` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT pour la table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT pour la table `pwdreset`
