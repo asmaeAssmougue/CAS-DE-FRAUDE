@@ -2,45 +2,110 @@
 
  include("connexion.php");
  session_start();
- 
-
+  $compteDel=$_SESSION['compteDel'];
+  $user=$_SESSION['username'];
+  if($compteDel=='respo'){
+      $query0="SELECT * FROM `responsablebureauexam` WHERE login = '$user';";
+      $reslt0=mysqli_query($link, $query0);
+      if(!$reslt0){
+          header("Location: changerPwd.php?error0=حدث خطأ ، حاول مرة أخرى");
+        exit();
+      }else{
+            $data0=mysqli_fetch_assoc($reslt0);
+            $user=$data0['login'];
+            $pwd=$data0['password'];
+      }
+     
+  }
+  elseif($compteDel=='secret'){
+       $query0="SELECT * FROM `secretaire` WHERE login = '$user';";
+      $reslt0=mysqli_query($link, $query0);
+      if(!$reslt0){
+          header("Location: changerPwd.php?error0=حدث خطأ ، حاول مرة أخرى");
+        exit();
+      }else{
+            $data0=mysqli_fetch_assoc($reslt0);
+            $user=$data0['login'];
+            $pwd=$data0['password'];
+      }
+  }
+  else{
+      $query0="SELECT * FROM `admin` WHERE login = '$user';";
+      $reslt0=mysqli_query($link, $query0);
+      if(!$reslt0){
+          header("Location: changerPwd.php?error0=حدث خطأ ، حاول مرة أخرى");
+        exit();
+      }else{
+            $data0=mysqli_fetch_assoc($reslt0);
+            $user=$data0['login'];
+            $pwd=$data0['password'];
+      }
+  }
   if(isset($_POST['submit'])){
-    if(empty($_POST['delete']) || empty($_POST['username']) || empty($_POST['password'])){
+ 
+    if(empty($_POST['username']) || empty($_POST['password'])){
     
-        header("Location: ajouterCompte.php?error=المرجو ملىء جميع الخانات");
+        header("Location: editCompte.php?error=المرجو ملىء جميع الخانات");
         exit(); 
     }else{
+        if(empty($_SESSION['username'])|| empty($_SESSION['compteDel'])){
+            header("Location: changerPwd.php?error0=حدث خطأ ، حاول مرة أخرى");
+        exit();
+        }
+        else{
+        $compteDel=$_SESSION['compteDel'];
+        $user=$_SESSION['username'];
         $pwd=$_POST['password'];
         $username=$_POST['username'];
-        $compteDel=$_POST['delete'];
+        
        if($compteDel=='respo'){
-        $query="INSERT INTO `responsablebureauexam`(`login`, `password`) VALUES ('$username','$pwd');";
+        $query="UPDATE `responsablebureauexam` SET `login`='$username',`password`='$pwd' WHERE login = '$user'";
         $result=mysqli_query($link, $query);
      
        
         if($result){
               
-             header('Location: ajouterCompte.php?success=تم إضافة الحساب بنجاح');
+             header('Location: editCompte.php?success=تم تعديل الحساب بنجاح');
              exit();
               
         }
         else{
-           header('Location: ajouterCompte.php?recupId=حدث خطأ ، حاول مرة أخرى');
+           header('Location: editCompte.php?recupId=حدث خطأ ، حاول مرة أخرى');
               exit();
         
         }
        }
        elseif($compteDel=='secret'){
         
-             $query="INSERT INTO `secretaire`(`login`, `password`) VALUES ('$username','$pwd');";
+             $query="UPDATE `secretaire` SET `login`='$username',`password`='$pwd' WHERE login = '$user'";
         $result=mysqli_query($link, $query);
+     
+       
         if($result){
-             header('Location: ajouterCompte.php?success=تم إضافة الحساب بنجاح');
+              
+             header('Location: editCompte.php?success=تم تعديل الحساب بنجاح');
              exit();
               
         }
         else{
-           header('Location: ajouterCompte.php?recupId=حدث خطأ ، حاول مرة أخرى');
+           header('Location: editCompte.php?recupId=حدث خطأ ، حاول مرة أخرى');
+              exit();
+        
+        }
+       }
+       else{
+             $query="UPDATE `admin` SET `login`='$username',`password`='$pwd' WHERE login = '$user'";
+        $result=mysqli_query($link, $query);
+     
+       
+        if($result){
+              
+             header('Location: editCompte.php?success=تم تعديل الحساب بنجاح');
+             exit();
+              
+        }
+        else{
+           header('Location: editCompte.php?recupId=حدث خطأ ، حاول مرة أخرى');
               exit();
         
         }
@@ -48,6 +113,7 @@
 
         
   }
+}
   }
  
   
@@ -89,7 +155,7 @@ body {
 
 .container {
   width: 500px;
-  min-height: 620px;
+  min-height: 520px;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -313,27 +379,20 @@ a:hover {
 
          
            
-             <div class="input-group" style="display:flex; flex-direction: row;">
-
-              
-               <select name="delete" class="form-select">
-                  <option value="respo" >مكتب الامتحانات</option>
-                  <option value="secret">الكتابة العامة</option>
-                  
-            </select>
+            
             <div class="input-group" style="display:flex; flex-direction: row;">
 
                <label for="username" style="position:relative; left:330px;">:الاسم المستخدم</label>
-               <input type="text" name="username" id="username" placeholder="Nom d'utilisateur">
+               <input type="text" name="username" id="username" value="<?php echo $user;?>">
            </div>
              <div class="input-group">
                   <label for="username" style="position:relative; left:330px;">: كلمة السر</label>
-               <input type="password" placeholder="mot de passe" name="password" required="required">
+               <input type="password" placeholder="mot de passe" name="password" required="required" value="<?php echo $pwd;?>">
            </div>
            <div class="input-group">
-               <button type="submit" class="btn btn-primary" name="submit">إضافة</button>
+               <button type="submit" class="btn btn-primary" name="submit">حفظ التغيرات</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >إلغاء</button>
-                <button type="submit" class="btn btn-primary"><a href="admin.php">رجوع</a></button>
+                <button type="submit" class="btn btn-primary"><a href="admin.php">خروج</a></button>
            </div>
            
            

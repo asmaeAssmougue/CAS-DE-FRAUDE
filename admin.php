@@ -106,7 +106,7 @@
        <form class="d-flex" method="POST" action="">
       <div class="reche">
         <button type="submit" class="btn btn-danger" name="submit" id="rech">
-          تغيير كلمة المرور
+        تعديل حساب
         </button>
        
        

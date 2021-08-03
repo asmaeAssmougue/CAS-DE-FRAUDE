@@ -16,7 +16,7 @@
         $query="SELECT * FROM `notification` WHERE id='$mainid';";
         $resultQ=mysqli_query($link, $query);
         if(!$resultQ){
-              header('Location: fraude.php?recupId=حدث خطأ أثناء ، حاول مرة أخرى');
+              header('Location: fraude.php?recupId=حدث خطأ ، حاول مرة أخرى');
               exit();
         }
         else{

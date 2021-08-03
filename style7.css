@@ -73,6 +73,7 @@ body {
   cursor: pointer;
   transition: 0.3s;
   margin-right: 5px;
+  margin-top: 20px;
 }
 .container .fraude .input-group .btn a {
   color: #000 !important;
@@ -199,16 +200,14 @@ label {
   border: 2px solid #a09797;
   padding: 10px 10px;
 }
-a{
-    color: #070707;
-    text-decoration: none;
-    background-color: transparent;
-  
-}
-a:hover{
+a {
   color: #070707;
-    text-decoration: none;
-
+  text-decoration: none;
+  background-color: transparent;
+}
+a:hover {
+  color: #070707;
+  text-decoration: none;
 }
 @media (max-width: 430px) {
   .container {
