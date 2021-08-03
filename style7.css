@@ -123,12 +123,12 @@ label {
   font-size: 1.4em;
   text-align: right;
 }
-.container .ajouPV .succes btn {
+.container .ajouPV .succes .btn {
   color: #fff !important;
   width: 40% !important;
   border-radius: 40% !important;
 }
-.container .ajouPV .succes btn a {
+.container .ajouPV .succes .btn a {
   color: #fff !important;
   text-decoration: none;
 }

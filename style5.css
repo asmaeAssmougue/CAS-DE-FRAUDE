@@ -62,7 +62,7 @@ body {
 
 .container .fraude .input-group .btn {
   display: inline-block;
-  width: 40%;
+  width: 30%;
   padding: 15px 20px;
   text-align: center;
   border: 1px solid #448ce9;
@@ -87,7 +87,7 @@ body {
   border-radius: 5px;
   margin: 20px auto;
   text-align: right;
-  font-size:1.1em;
+  font-size: 1.1em;
 }
 .logo {
   position: relative;
@@ -119,7 +119,7 @@ label {
   border-radius: 5px;
   margin: 20px auto;
   text-align: right;
-  font-size:1.2em;
+  font-size: 1.2em;
 }
 .button {
   /*float: left;
@@ -145,6 +145,22 @@ label {
   color: #f2dede !important;
 }
 
+.container .fraude .input-group .btn a {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-size: 1em !important;
+}
+
+a {
+  color: #000000 !important;
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
+a:hover {
+  color: #000000 !important;
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
 
 @media (max-width: 430px) {
   .container {

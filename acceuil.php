@@ -2,7 +2,7 @@
    include("connexion.php");
    session_start();
    if(isset($_POST['admin'])){
-     header('Location: admin.php?succes=1');
+     header('Location: adminAute.php?succes=1');
      exit();
    }
 
@@ -111,12 +111,10 @@
         <h2>Bureau des exams</h2>
       </div>
       <div class="reche">
-        <button type="submit" class="btn btn-danger">
+        <button type="submit" class="btn btn-danger" id="rech">
           <a href="rechercherEtud.php">بحث</a>
         </button>
-        <button type="submit" class="btn btn-primary">
-          <a href="rechercherEtud.php">تعديل</a>
-        </button>
+       
        
       </div>
     </section>

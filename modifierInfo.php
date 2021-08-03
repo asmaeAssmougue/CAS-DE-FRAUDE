@@ -226,6 +226,7 @@
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">حفظ التغييرات</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >الغاء</button>
+               <button type="submit" class="btn btn-primary" id="retour" width="30%;"><a href="recherListeEtd.php" style="text-decoration:none;color:#000;">رجوع</a></button>
            </div>
            
            
