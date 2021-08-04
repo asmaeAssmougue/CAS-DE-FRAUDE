@@ -11,7 +11,7 @@
         $query="SELECT * FROM `etudiant` WHERE numApogee = '$ident' OR CNE_CIN = '$ident';";
         $resultQ=mysqli_query($link, $query);
      
-       if (mysqli_num_rows($resultQ) == 0) {
+       if (mysqli_num_rows($resultQ)==0) {
              
              header('Location: rechercherEtud.php?recupId=رقم الطالب غير صحيح ، يرجى المحاولة مرة أخرى');
               exit();
