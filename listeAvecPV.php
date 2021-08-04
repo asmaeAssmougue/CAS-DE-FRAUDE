@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/712b6663e3.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Fraude</title>
+    <title>listePVFraude</title>
      
     <style>
           @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -221,9 +221,7 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
             <?php } ?>
        <button onclick="window.print();" class="btn btn-primary" id="printPageButton">طبع</button>
        <button type="submit" class="btn btn-primary" id="retour"><a href="listeFraudePV.php">رجوع</a></button>
-     
-
-      
+    
       </div>
     </section> 
     </div>

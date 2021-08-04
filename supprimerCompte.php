@@ -10,8 +10,8 @@
         header("Location: supprimerCompte.php?error=المرجو ملىء جميع الخانات");
         exit(); 
     }else{
-        $username=$_POST['username'];
-        $compteDel=$_POST['delete'];
+        $username=htmlspecialchars($_POST['username']);
+        $compteDel=htmlspecialchars($_POST['delete']);
        if($compteDel=='respo'){
         $query="DELETE FROM `responsablebureauexam` WHERE login = '$username';";
         $result=mysqli_query($link, $query);
@@ -32,6 +32,19 @@
        elseif($compteDel=='secret'){
         
             $query="DELETE FROM `secretaire` WHERE login = '$username';";
+        $result=mysqli_query($link, $query);
+        if(mysqli_affected_rows($link)){
+             header('Location: supprimerCompte.php?success=تم حذف الحساب بنجاح');
+             exit();
+              
+        }
+        else{
+           header('Location: supprimerCompte.php?recupId=حدث خطأ ، حاول مرة أخرى');
+              exit();
+        
+        }
+       }else{
+           $query="DELETE FROM `admin` WHERE login = '$username';";
         $result=mysqli_query($link, $query);
         if(mysqli_affected_rows($link)){
              header('Location: supprimerCompte.php?success=تم حذف الحساب بنجاح');
@@ -88,7 +101,7 @@ body {
 
 .container {
   width: 500px;
-  min-height: 500px;
+  min-height: 530px;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -167,18 +180,7 @@ label {
   font-size: 1.3em;
   font-weight: bold;
 }
-.container .fraude .text {
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-.container .fraude .text textarea {
-  display: block;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  width: 80%;
-  border: 2px solid #a09797;
-  padding: 10px 10px;
-}
+
 .succes {
   background: #fcf8f8;
   color: #33ff44;
@@ -189,82 +191,7 @@ label {
   font-size: 1.4em;
   text-align: right;
 }
-.container .ajouPV .succes .btn {
-  color: #fff !important;
-  width: 40% !important;
-  border-radius: 40% !important;
-}
-.container .ajouPV .succes .btn a {
-  color: #fff !important;
-  text-decoration: none;
-}
-.container .text {
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-.container .text textarea {
-  display: block;
-  margin-top: 40px;
-  margin-bottom: 40px !important;
-  width: 80%;
-  border: 2px solid #a09797;
-  padding: 10px 10px;
-}
-.container .ajouPV .input-group .btn {
-  display: inline-block !important;
-  width: 30% !important;
-  padding: 15px 20px !important;
-  text-align: center !important;
-  border: 1px solid #448ce9;
-  outline: none !important;
-  border-radius: 30px !important;
-  font-size: 1.2rem !important;
-  color: rgb(24, 21, 21) !important;
-  cursor: pointer !important;
-  transition: 0.3s !important;
-  margin-right: 5px !important;
-}
-.container .ajouPV .input-group .btn a {
-  color: #000 !important;
-  text-decoration: none !important;
-  font-size: 1em !important;
-}
-.container .ajouPV .input-group select {
-  width: 100% !important;
-  height: 100% !important;
-  border: 2px solid #a09797 !important;
-  font-size: 1em !important;
-  border-radius: 10px !important;
-  background: transparent !important;
-  outline: none !important;
-  transition: 0.3s !important;
-}
-.container .ajouPV .input-group input {
-  width: 100%;
-  height: 100%;
-  border: 2px solid #a09797;
-  padding: 15px 20px;
-  font-size: 1rem;
-  border-radius: 10px;
-  background: transparent;
-  outline: none;
-  transition: 0.3s;
-}
-.container .ajouPV .input-group .btn:hover {
-  transform: translateY(-5px) !important;
-}
-.container .ajouPV .text {
-  margin-top: 10px;
-  /*margin-bottom: 40px;*/
-}
-.container .ajouPV .text textarea {
-  display: block;
-  margin-top: 40px;
-  margin-bottom: 50px;
-  width: 100%;
-  border: 2px solid #a09797;
-  padding: 10px 10px;
-}
+
 a {
   color: #070707;
   text-decoration: none;
@@ -294,10 +221,6 @@ a:hover {
           <p class="error"><?php echo $_GET['recupId']; ?></p>
             <?php } ?>
           
-             <?php if(isset($_GET['error1'])){ ?>
-          
-          <p class="error"><?php echo $_GET['error1']; ?></p>
-            <?php } ?>
           <?php if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p>
@@ -318,7 +241,7 @@ a:hover {
                <select name="delete" class="form-select">
                   <option value="respo" >مكتب الامتحانات</option>
                   <option value="secret">الكتابة العامة</option>
-                  
+                  <option value="admin">admin</option>
             </select>
             <div class="input-group" style="display:flex; flex-direction: row;">
 
@@ -330,13 +253,8 @@ a:hover {
                <button type="submit" class="btn btn-primary" name="submit">مسح</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >إلغاء</button>
                 <button type="submit" class="btn btn-primary"><a href="admin.php">رجوع</a></button>
-           </div>
-           
-           
+           </div>    
          </form>
-    </div>
-
-
-    
+    </div> 
   </body>
 </html>

@@ -58,10 +58,7 @@
           
           <p class="succes"><?php echo $_GET['succes']; ?></p><div class="dec"><a href="deconnexion.php" class="button">خروج</a></div>
             <?php } ?>
-          <?php if(isset($_GET['error1'])){ ?>
-          
-          <p class="error"><?php echo $_GET['error1']; ?></p><div class="dec"><a href="deconnexion.php" class="button">خروج</a></div>
-            <?php } ?>
+         
           <?php if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p><div class="dec"><a href="deconnexion.php" class="button">خروج</a></div>
@@ -70,21 +67,7 @@
           
           <p class="error"><?php echo $_GET['inscrire']; ?></p><div class="dec"><a href="deconnexion.php" class="button">خروج</a></div>
             <?php } ?>
-             <?php if(isset($_GET['fraudeSave'])){ ?>
           
-          <p class="error"><?php echo $_GET['fraudeSave']; ?></p><div class="dec"><a href="deconnexion.php" class="button">خروج</a></div>
-            <?php } ?>
-            <?php if(isset($_GET['errorEnvoie'])){ ?>
-          
-          <p class="error"><?php echo $_GET['errorEnvoie']; ?></p><div class="dec"><a href="deconnexion.php" class="button">خروج</a></div>
-            <?php } ?>
-            
-
-             <?php if(isset($_GET['success'])){ ?>
-          
-          <p class="succes"><?php echo $_GET['success']; ?></p><div class="dec"><a href="deconnexion.php" class="button">خروج</a></div>
-            <?php } ?>
-            
            <div class="input-group" style="display:flex; flex-direction: row;">
 
                <label for="numEtd" style="position:relative; left:390px;">:الرقم</label>
@@ -233,10 +216,6 @@
          </form>
     </div>
     
-
-     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   
   </body>
  
 </html>

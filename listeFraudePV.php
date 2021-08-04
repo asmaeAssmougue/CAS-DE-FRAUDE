@@ -67,14 +67,11 @@
                <input type="text" name="date" id="date">
            </div>
                 
-
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">حفظ</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >الغاء</button>
                <button type="submit" class="btn btn-primary"><a href="modifierFraude.php">رجوع</a></button>
            </div>
-           
-           
          </form>
     </div>
   </body>

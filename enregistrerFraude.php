@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" />
    
     <link rel="stylesheet" href="style5.css">
-    <title>Fraude</title>
+    <title>enregistrerFraude</title>
   </head>
   <body>
      
@@ -177,12 +177,7 @@
            
            
          </form>
-    </div>
-    
-
-     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   
+    </div>   
   </body>
  
 </html>

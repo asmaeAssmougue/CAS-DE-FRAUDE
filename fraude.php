@@ -10,7 +10,7 @@
   if(isset($_POST['submit'])){
     if(empty($_POST['date'])){
     
-        header("Location: fraude.php?error=المرجو ملىء جميع الخانات");
+        header("Location: fraude.php?error2=المرجو ملىء جميع الخانات");
         exit(); 
     }else{
         $query="SELECT * FROM `notification` WHERE id='$mainid';";
@@ -44,7 +44,7 @@
     
           }
         }
-      //$numApogee=$_SESSION['numApogee'];
+
       
   }
   }
@@ -72,9 +72,9 @@
           <div class="logo">
                   <img src="images/logo3.png" alt="logo">
           </div>
-           <?php if(isset($_GET['fraudeSave'])){ ?>
+           <?php if(isset($_GET['error2'])){ ?>
           
-          <p class="error"><?php echo $_GET['fraudeSave']; ?></p>
+          <p class="error"><?php echo $_GET['error2']; ?></p>
             <?php } ?>
           <?php if(isset($_GET['recupId'])){ ?>
           
@@ -92,37 +92,21 @@
           
           <p class="error"><?php echo $_GET['inscrire']; ?></p>
             <?php } ?>
-             <?php if(isset($_GET['update'])){ ?>
-          
-          <p class="error"><?php echo $_GET['update']; ?></p>
-            <?php } ?>
             
-
-             <?php if(isset($_GET['success'])){ ?>
-          
-          <p class="succes"><?php echo $_GET['success']; ?></p>
-            <?php } ?>
-
-         
-           
              <div class="input-group" style="display:flex; flex-direction: row;">
 
                <label for="date" style="position:relative; left:350px;">:تاريخ الجلسة</label>
                <input type="text" name="date" id="date">
            </div>
-                
-
+             
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">حفظ</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >إلغاء</button>
                 <button type="submit" class="btn btn-primary"><a href="modifierFraude.php">رجوع</a></button>
            </div>
            
-           
          </form>
     </div>
 
-
-    
   </body>
 </html>

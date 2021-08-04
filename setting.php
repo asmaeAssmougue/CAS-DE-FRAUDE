@@ -137,7 +137,7 @@ session_start();
          $session = addslashes(htmlspecialchars($session));
          $loginR=$_SESSION['login'];
          $_SESSION['numApogee']=$numApogee;
-        $sql0 = "UPDATE `etudiant` SET `numApogee`='$numApogee',`numEtd`='$numEtd',`nom`='$nom',`prenom`='$prenom',`filliere`='$filliere',`semestre`='$session'  WHERE numApogee = $apo";
+        $sql0 = "UPDATE `etudiant` SET `numApogee`='$numApogee',`numEtd`='$numEtd',`nom`='$nom',`prenom`='$prenom',`filliere`='$filliere',`semestre`='$optionF'  WHERE numApogee = $apo";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
           
@@ -168,9 +168,6 @@ session_start();
             }
             
         }
-            
-
-
    }
    mysqli_close($link);
 ?>

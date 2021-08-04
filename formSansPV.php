@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/712b6663e3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style7.css">
-    <title>Fraude</title>
+    <title>FormFraude</title>
   </head>
   <body>
     <div class="container">
@@ -32,20 +32,7 @@
           
           <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>
-           <?php if(isset($_GET['inscrire'])){ ?>
-          
-          <p class="error"><?php echo $_GET['inscrire']; ?></p>
-            <?php } ?>
-             <?php if(isset($_GET['update'])){ ?>
-          
-          <p class="error"><?php echo $_GET['update']; ?></p>
-            <?php } ?>
-            
-
-             <?php if(isset($_GET['success'])){ ?>
-          
-          <p class="succes"><?php echo $_GET['success']; ?></p>
-            <?php } ?>
+       
 
            <div class="input-group" style="display:flex; flex-direction: row;">
 

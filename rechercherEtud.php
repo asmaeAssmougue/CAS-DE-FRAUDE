@@ -53,43 +53,34 @@
           <p class="error"><?php echo $_GET['update']; ?></p>
             <?php } ?>
             
-
-             <?php if(isset($_GET['success'])){ ?>
+             <?php if(isset($_GET['fraudeSave'])){ ?>
           
-          <p class="succes"><?php echo $_GET['success']; ?></p>
+          <p class="error"><?php echo $_GET['fraudeSave']; ?></p>
             <?php } ?>
-            <?php if(isset($_GET['success'])){ ?>
-          
-          <p class="succes"><?php echo $_GET['succes2']; ?></p>
-            <?php } ?>
-             <?php if(isset($_GET['succes2'])){ ?>
-          
-          <p class="succes"><?php echo $_GET['succes2']; ?></p>
-            <?php } ?>
+           
              <?php if(isset($_GET['fraudeSave2'])){ ?>
           
           <p class="error"><?php echo $_GET['fraudeSave2']; ?></p>
             <?php } ?>
-         
+           <?php if(isset($_GET['succes2'])){ ?>
+          
+          <p class="succes"><?php echo $_GET['succes2']; ?></p>
+            <?php } ?>
            
              <div class="input-group" style="display:flex; flex-direction: row;">
 
                <label for="date" style="position:relative; left:350px;">:رقم الطالب</label>
                <input type="text" name="numApogee" id="date" placeholder="numApogee/CNE/CIN">
            </div>
-                
-
+           
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">بحث</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >إلغاء</button>
                 <button type="submit" class="btn btn-primary"><a href="acceuil.php">رجوع</a></button>
            </div>
-           
-           
+          
          </form>
     </div>
 
-
-    
   </body>
 </html>

@@ -2,8 +2,6 @@
  
  include("connexion.php");
  session_start();
-
-
   if(isset($_POST['submit'])){
     if(empty($_POST['anneeUnv'])||empty($_POST['session'])||empty($_POST['date'])){
     
@@ -32,8 +30,7 @@
       $_SESSION['date']=$date;
       header('Location: listeAvecPV.php?succes=1');
       exit();
-
-      
+    
  }
 }
   

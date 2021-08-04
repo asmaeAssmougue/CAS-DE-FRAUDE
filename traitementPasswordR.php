@@ -50,12 +50,9 @@ if(isset($_POST['reset-request-submit'])){
         mail($to, $subject, $message, $headers);
         header("Location: resetPasswordR.php?reset=success");
     
-    
 }
 else{
     header('Location:connexionResponsable.php');
 }
-
-
 
 ?>

@@ -35,7 +35,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <link href="style1.css" rel="stylesheet" media="all" type="text/css" />
+    <link href="style1.css" rel="stylesheet" media="all" type="text/css"/>
     <title>Acceuil</title>
   </head>
   <body>

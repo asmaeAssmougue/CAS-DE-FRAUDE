@@ -2,8 +2,6 @@
  
  include("connexion.php");
  session_start();
-
-
   if(isset($_POST['submit'])){
     if(empty($_POST['anneeUnv'])||empty($_POST['session'])||empty($_POST['date'])){
     
@@ -31,9 +29,7 @@
       $_SESSION['anneeUnv']=$anneeUnv;
       $_SESSION['date']=$date;
       header('Location: listeSansPV2.php?succes=1');
-      exit();
-
-      
+      exit();  
  }
 }
   

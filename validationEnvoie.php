@@ -1,8 +1,6 @@
 <?php
 include('connexion.php');
 session_start();
-
-
    if(empty($_POST['numEtd']) || empty($_POST['numApogee']) || empty($_POST['nom']) || empty($_POST['prenom']) || 
    empty($_POST['filliere']) || empty($_POST['optionF']) || empty($_POST['description']) || empty($_POST['anneeUnv']) || empty($_POST['session'])){     
     header("Location: enregistrerFraude.php?error=المرجو ملىء  جميع الخانات");
@@ -163,8 +161,6 @@ session_start();
 
         }
             
-
-
    }
    mysqli_close($link);
 ?>

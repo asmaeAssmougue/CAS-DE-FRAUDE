@@ -9,7 +9,14 @@
    }
    else{
        $numApogee=$_POST['numApogee'];
-       $PV=addslashes(htmlspecialchars($_POST['PV']));
+       $queryS="SELECT * FROM `etudiant` WHERE numApogee = '$numApogee';";
+       $resltS=mysqli_query($link, $queryS);
+       if(mysqli_num_rows($resltS)==0){
+            header("Location: AjouterPV.php?error1=رقم الطالب غير موجود ، يرجى المحاولة مرة أخرى");
+           exit();
+       }
+       else{
+           $PV=addslashes(htmlspecialchars($_POST['PV']));
        $sql2="UPDATE `conseildiscipline` SET `PV`='$PV'  WHERE numApogee='$numApogee';";
        $reslt=mysqli_query($link, $sql2);
        if(!$reslt){
@@ -20,6 +27,8 @@
           header("Location: AjouterPV.php?succes=تمت اضافة التقرير بنجاح");
            exit();
        }
+       }
+       
   }
 }
 ?>
@@ -51,6 +60,10 @@
           <?php if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p>
+            <?php } ?>
+            <?php if(isset($_GET['error1'])){ ?>
+          
+          <p class="error"><?php echo $_GET['error1']; ?></p>
             <?php } ?>
             <?php if(isset($_GET['update'])){ ?>
           

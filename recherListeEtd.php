@@ -57,9 +57,6 @@ section {
 
 #logo {
   position: absolute;
- /* left: 220px;
-  top: 0px;
-  width: 500px;*/
   height: 597px;
   margin-bottom:40px;
   text-align:center;
@@ -255,10 +252,7 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
           
           <p class="error"><?php echo $_GET['error2']; ?></p>
             <?php } ?>
-            <?php if(isset($_GET['succes2'])){ ?>
-          
-          <p class="succes"><?php echo $_GET['succes2']; ?></p>
-            <?php } ?>
+           
          <form action="" method="POST">
        <button onclick="window.print();" class="btn btn-primary" id="printPageButton">طبع</button>
        <button type="submit" class="btn btn-primary" id="retour"><a href="rechercherEtud.php">رجوع</a></button>
