@@ -182,11 +182,11 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
         <table class="table table-bordered">
             <thead class="border border-dark">
             <tr>
-                <th scope="col" style="width: 400px">قرار المجلس</th>
+                <th scope="col"style="width: 400px">قرار المجلس</th>
               <th scope="col" style="width: 460px">طبيعة الغش</th>
-              <th scope="col" style="width: 250px">المسلك</th>
+              <th scope="col" style="width: 350px">المسلك</th>
               <th scope="col">ر.ط</th>
-              <th scope="col" style="width: 250px">الاسم و النسب</th>
+              <th scope="col" style="width: 200px">الاسم و النسب</th>
               <th scope="col">الرقم</th>
               
             </tr>

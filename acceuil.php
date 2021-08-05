@@ -43,16 +43,16 @@
       <div class="menu">
         <nav
           class="navbar navbar-expand-lg navbar-light"
-          style="background-color: #33ebdc"
+          style="background-color: #Ffcc00;"
         >
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img
-                src="images/logo3.png"
-                alt="logo1AgdalUniv"
-                width="280"
-                height="60"
-            /></a>
+                src="images/logoYIA.png"
+                alt="logo"
+               width="60";height="40"; style="margin-left:40px;"
+            />
+              </a>
             <button
               class="navbar-toggler"
               type="button"
@@ -99,16 +99,20 @@
     <section>
       <div class="p">
         <h1>
-          FSJE-Agdal e-<span
+          <span
             style="
-              color: #08e2f2;
+              color: #263A99;
               font-family: 'Varela Round', sans-serif;
               font-weight: bold;
             "
-            >FRAUDE</span
-          >
+            >E-FRAUDE</span
+          > <br>   <img
+                src="images/logoYAI.png"
+                alt="logo"  width="380" height="300"
+               
+            />
         </h1>
-        <h2>Bureau des exams</h2>
+        <h2>Bureau des examens</h2>
       </div>
       <div class="reche">
         <button type="submit" class="btn btn-danger" id="rech">

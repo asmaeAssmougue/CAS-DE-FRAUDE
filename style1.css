@@ -9,8 +9,7 @@
 body {
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(images/logo4.jpeg);
+  background-image: url(images/agdal.jpeg);
   background-position: center;
   background-size: cover;
 }
@@ -23,16 +22,18 @@ body {
   height: 597px;
 }
 .p {
-  padding-top: 60px;
+  padding-top: 20px;
   width: 70%;
   margin: auto;
   text-align: center;
   font-size: 1.2em;
   color: #333333;
   font-family: "Source Sans Pro", "Trebuchet MS", Arial;
-  padding-bottom: 60px;
+  padding-bottom: 10px;
 }
-
+.Efraude {
+  color: #ffff70;
+}
 .btn-danger:active:focus {
   box-shadow: none !important;
   color: #ffffff !important;
@@ -68,20 +69,19 @@ body {
   font-size: 1.2em;
 }
 
-.fraude {
+/*.fraude {
   color: #12f6f7;
-}
-h1,
+}*/
+
 h2 {
-  color: #fff;
+  color: #ffffff;
 }
 .reche {
-  
-  text-align:center;
+  text-align: center;
 }
 .navbar-light .navbar-nav .nav-link {
-  font-size: 1.3em !important;
-  color: azure !important;
+  font-size: 1.6em !important;
+  color: #ffffff !important;
   font-weight: bold !important;
   margin-right: 60px;
   margin-left: 30px;
@@ -89,6 +89,7 @@ h2 {
 .navbar-nav .nav-link {
   margin-left: 80px !important;
 }
+
 @media (max-width: 430px) {
   .contn {
     width: 300px;
