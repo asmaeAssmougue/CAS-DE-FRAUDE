@@ -58,7 +58,7 @@ body {
 
 .container .login-email .input-group input:focus,
 .container .login-email .input-group input:valid {
-  border-color: #a29bfe;
+  border-color: #263a99;
 }
 
 .container .login-email .input-group .btn {
@@ -67,7 +67,7 @@ body {
   padding: 15px 20px;
   text-align: center;
   border: none;
-  background: #a29bfe;
+  background: #263a99;
   outline: none;
   border-radius: 30px;
   font-size: 1.2rem;
@@ -79,7 +79,7 @@ body {
 
 .container .login-email .input-group .btn:hover {
   transform: translateY(-5px);
-  background: #6c5ce7;
+  background: #263a99;
 }
 .error {
   background: #f2dede;
@@ -100,14 +100,14 @@ body {
   text-align: right;
 }
 .forgetP a {
-  color: #a29bfe;
+  color: #263a99;
   font-weight: bold;
   text-decoration: none;
   margin-bottom: 5px;
 }
 .forgetP a:hover,
 .forgetP a:visited {
-  color: #5f56dabd;
+  color: #469ff1;
 }
 
 @media (max-width: 430px) {

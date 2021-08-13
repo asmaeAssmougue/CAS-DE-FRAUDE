@@ -8,16 +8,13 @@
         exit(); 
     }else {
         $ident=htmlspecialchars($_POST['numApogee']);
-        $query="SELECT * FROM `etudiant` WHERE numApogee = '$ident' OR CNE_CIN = '$ident';";
+        $query="SELECT * FROM `etudiant` WHERE numApogee = '$ident';";
         $resultQ=mysqli_query($link, $query);
      
-       if (mysqli_num_rows($resultQ)==0) {
-             
-             header('Location: rechercherEtud.php?recupId=رقم الطالب غير صحيح ، يرجى المحاولة مرة أخرى');
-              exit();
-        }
-       else{
-          
+      
+        if(mysqli_num_rows($resultQ) > 0){
+
+       
         if ($dataQ=mysqli_fetch_assoc($resultQ)) {
               
                 $numApogee=$dataQ['numApogee'];
@@ -54,9 +51,13 @@
           }
         
         }
+      }else{
+            header('Location: rechercherEtud.php?recupId=رقم الطالب غير صحيح ، يرجى المحاولة مرة أخرى');
+              exit();
+      }
    
   }
-       }
+       
     
   
 ?>

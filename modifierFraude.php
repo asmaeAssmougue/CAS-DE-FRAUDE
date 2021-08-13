@@ -38,7 +38,7 @@
                   </script>
                                               
                               
-                              </script>
+                            
                            <?php
                             $sql1 = "SELECT * FROM `notification` WHERE STATUS = 0";
                             $reslt1 = mysqli_query($link, $sql1);
@@ -66,14 +66,15 @@
                       while($fetch = mysqli_fetch_assoc($reslt1)){
                           $numApogee = $fetch['numApogee'];
                           $_SESSION['numApogee']=$fetch['numApogee'];
-                          $sql2 = "SELECT * FROM `etudiant` WHERE numApogee =".$numApogee.";";
+                          $sql2 = "SELECT * FROM `etudiant` WHERE numApogee ='$numApogee';";
                           $reslt2 = mysqli_query($link, $sql2);
                            if(!$reslt2){
-                             header('Location: modifierFraude.php?error=هناك مشكلة ، حاول مرة أخرى');
-                             exit();
+                          
+                            header('Location: modifierFraude.php?error=هناك مشكلة ، حاول مرة أخرى');
+                            exit();
                            }
                            else{ 
-                           
+                            
                              while($data1=mysqli_fetch_assoc($reslt2)){
                            ?>
                           <tr>

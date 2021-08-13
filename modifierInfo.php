@@ -26,7 +26,10 @@
            $_SESSION['session']=$data['session'];
            $date=$data['date'];
            $PV=$data['PV'];
-          
+           $fill=addslashes(htmlspecialchars($filliere));
+           $sqlF="SELECT `codeF` FROM `filliere` WHERE lib_fill = '$fill';";
+          $resltF=mysqli_query($link, $sqlF);
+          $dataF=mysqli_fetch_assoc($resltF);
 ?>
 
 <!doctype html>
@@ -92,38 +95,17 @@
 
                <label for="filliere" style="position:relative; left:390px;">:المسلك</label>
                <select name="filliere">
-                  <option value="" selected ><?php echo "$filliere";?></option>
-                  <option value="arabe">قانون بالعربية </option>
-                  <option value="francais">Droit en Français</option>
-                  <option value="economie">Economie de Gestion</option>
-                   <option value="politique">Sciences Politiques</option>
-                  
-                   <option value="LSEG">Licence D'études Fondamentales en Sciences Economiques et Gestion</option>
-                   <option value="LDF">Licence D'études Fondamentales en Droit Français</option>
-                   <option value="LDA">الاجازة في القانون بالعربية</option>
-                   <option value="LSEG">Licence D'études Fondamentales en Sciences Economiques et Gestion</option>
-                   <option value="LSG">Licence D'études Fondamentales D'exellence en Sciences de Gestion</option>
-                   <option value="LSP">Licence D'études Fondamentales D'exellence en Sciences de Politique</option>
-                   <option value="LPM">Licence Professionnelle en Management PME-PMI</option>
+                  <option value="<?php echo $dataF['codeF'] ?>" selected ><?php echo "$filliere";?></option>
+                  <?php 
+                  $query="SELECT * FROM `filliere`;";
+                  $reslt=mysqli_query($link, $query);
+                  while($fetch=mysqli_fetch_assoc($reslt)){
+                    ?>
+                    <option value="<?php echo $fetch['codeF'] ?>"><?php echo $fetch['lib_fill'] ?></option>
 
-                    <option value="juridique">العلوم القانونية</option>
-                   <option value="droit"> القانون العام والعلوم السياسية</option>
-                   <option value="DSP">Droit Publiques et Sciences Politique</option>
-                   <option value="ET">Economie des Territoires</option>
-                      <option value="SG">Sciences de Gestion</option>
-                         <option value="SE">Sciences Economiques</option> 
-                    <option value="FP">Finance Publiques et Fiscalité(MS)</option> 
-                    <option value="SJ">Sciences Juridiques</option> 
-                    <option value="MS">Migration et Societés(MS)</option> 
-                    <option value="GPP">Genre et Politiques Publiques(MS)</option> 
-                    <option value="FI">Finance Islamiques</option> 
-                    <option value="AI">Administration Internationale et Gestion des partenariats dans l'espace Euro Mediterranee(MS)</option> 
-                    <option value="DHL">(ماستر متخصص)حقوق الانسان القانون الدولي الانساني</option> 
-                    <option value="EE">Economie de l'environnement</option> 
-                    <option value="EEP">Economie et Evaluation des Politiques Publiques</option> 
-                     <option value="GFC">Gestion Finance Comptable et Fiscale(MS)</option>
-                   <option value="MSRH">Management Stratégiques des Ressources Humaines</option>
-
+               <?php
+                  }
+                  ?>
 
 
                   

@@ -162,6 +162,8 @@ a:hover {
   background-color: transparent !important;
 }
 
+       
+       
 @media (max-width: 430px) {
   .container {
     width: 300px;

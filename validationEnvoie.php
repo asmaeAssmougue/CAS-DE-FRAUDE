@@ -26,97 +26,10 @@ session_start();
          $nom = $_POST['nom'];
          $prenom = $_POST['prenom'];
          $filliere = $_POST['filliere'];
-         
-            switch ($filliere) {
-                case 'arabe':
-                    $filliere="قانون بالعربية";
-                    break;
-                case 'francais':
-                    $filliere="Droit en Français";
-                    break;
-                case 'economie':
-                    $filliere="Economie de Gestion";
-                    break;
-                     case 'politique':
-                $filliere="Sciences Politiques";
-                    break;
-                case 'LSEG':
-                    $filliere="Licence D'études Fondamentales en Sciences Economiques et Gestion";
-                    break;
-                case 'LDF':
-                    $filliere="Licence D'études Fondamentales en Droit Français";
-                    break;
-                    case 'LDA':
-                    $filliere=" الاجازة في القانون بالعربية";
-                    break;
-                case 'LSEG':
-                    $filliere="Licence D'études Fondamentales en Sciences Economiques et Gestion";
-                    break;
-                case 'LSG':
-                    $filliere="Licence D'études Fondamentales D'exellence en Sciences de Gestion";
-                    break;
-                     case 'LSP':
-                $filliere="Licence D'études Fondamentales D'exellence en Sciences de Politiques";
-                    break;
-                     case 'LPM':
-                    $filliere="Licence Professionnelle en Management PME-PMI";
-                    break;
-                case 'juridique':
-                    $filliere=" العلوم القانونية ";
-                    break;
-                case 'droit':
-                    $filliere="القانون العام والعلوم السياسية";
-                    break;
-                     case 'DSP':
-                $filliere="Droit Publiques et Sciences Politiques";
-                    break;
-                        case 'ET':
-                    $filliere="Economie des Territoires";
-                    break;
-                case 'SG':
-                    $filliere="Sciences de Gestion";
-                    break;
-                case 'SE':
-                    $filliere="Sciences Economiques";
-                    break;
-                     case 'FP':
-                $filliere="Finance Publiques et Fiscalité(MS)";
-                    break;       
-                     case 'SJ':
-                    $filliere="Sciences Juridiques ";
-                    break;
-                case 'MS':
-                    $filliere="Migration et Societés(MS)";
-                    break;
-                     case 'GPP':
-                $filliere="Genre et Politiques Publiques(MS)";
-                    break;
-                        case 'FI':
-                    $filliere="Finance Islamique(MS)";
-                    break;
-                case 'AI':
-                    $filliere="Administration Internationale et Gestion des partenariats dans l'espace Euro Mediterranee(MS)";
-                    break;
-                case 'DHL':
-                    $filliere="(ماستر متخصص)حقوق الانسان القانون الدولي الانساني";
-                    break;
-                     case 'EE':
-                $filliere="Economie de l'environnement";
-                    break;  
-                       case 'EEP':
-                $filliere="Economie et Evaluation des Politiques Publiques";
-                    break;  
-                       case 'GFC':
-                $filliere="Gestion Finance Comptable et Fiscale(MS)";
-                    break;  
-                       case 'MSRH':
-                $filliere="Management Stratégiques des Ressources Humaines";
-                    break;  
-                     
-                default:
-                    header("Location: enregistreFraude.php?error1=المرجو الاختيار من الائحة");
-                    exit();
-            }
+         $querySel="SELECT `lib_fill` FROM `filliere` WHERE codeF = '$filliere';";
+         $reseltSel=mysqli_query($link, $querySel);
+         $dataSel=mysqli_fetch_assoc($reseltSel);
+         $filliere=$dataSel["lib_fill"];
          $optionF = $_POST['optionF'];
          $description = $_POST['description'];
         
