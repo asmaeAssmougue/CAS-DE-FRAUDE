@@ -24,7 +24,7 @@
               
         }
         else{
-           header('Location: supprimerCompte.php?recupId=حدث خطأ ، حاول مرة أخرى');
+           header('Location: supprimerCompte.php?recupId=اسم المستخدم غير موجود ، حاول مرة أخرى');
               exit();
         
         }

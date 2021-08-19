@@ -27,7 +27,7 @@
       $loginS=$_SESSION['login'];
       $_SESSION['date']=$date;
     
-      $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','الملف في طور المعالجة','$numApogee')";
+      $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','الملف في طور المعالجة','$numApogee') ON DUPLICATE KEY UPDATE loginS='$loginS', date='$date', PV='الملف في طور المعالجة';";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
             

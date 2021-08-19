@@ -71,7 +71,7 @@
            <div class="input-group" style="display:flex; flex-direction: row;">
 
                <label for="numApogee" style="position:relative; left: 350px;">:رقم الطالب</label>
-               <input type="text" name="numApogee" placeholder="Numero Apogee" id="numApogee">
+               <input type="text" name="numApogee" placeholder="Numero Apogee/CNE/CIN" id="numApogee">
            </div>
            <div class="input-group" style="display:flex; flex-direction: row;">
 

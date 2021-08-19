@@ -29,7 +29,7 @@ body {
 
 
 .container .login{
-    color: rgb(26, 231, 238);
+    color: #263a99;
     font-weight: bold;
     font-size: 1.3rem;
     text-align: center;
@@ -58,7 +58,7 @@ body {
 .container .input-group input {
     width: 100%;
     height: 100%;
-    border: 2px solid #19dad0;
+    border: 2px solid #263a99;
     padding: 15px 20px;
     font-size: 1rem;
     border-radius: 30px;
@@ -69,7 +69,7 @@ body {
 }
 
 .container .input-group input:focus, .container .input-group input:valid {
-    border-color: #9beffe;
+    border-color: #263a99;
 }
 .container .input-group .btn {
     margin-top:90px;
@@ -78,7 +78,7 @@ body {
     padding: 10px 10px;
     text-align: center;
     border: none;
-    background: #0cdbe2;
+    background: #263a99;
     outline: none;
     border-radius: 30px;
     font-size: 1.1rem;
@@ -89,7 +89,7 @@ body {
 
 .container .input-group .btn:hover {
     transform: translateY(-5px);
-    background: #5cd7e7;
+    background: #263a99;
 }
 @media (max-width: 430px) {
     .container {

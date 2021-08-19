@@ -16,15 +16,16 @@ session_start();
     <section class="container">
       
       
-      <form action="send_link.php" method="post">
-          <h1  class="login">Reset your password</h1>
-          <p>An e-mail will be send to you with instructions on how to reset password</p>
+      <form action="" method="post">
+          <h1  class="login">إعادة تعيين كلمة المرور</h1>
+        
           <div class="input-group">
-                 <input type="email" name="email" placeholder="Enter your e-mail address..">
+                 <input type="email" name="email" placeholder="e-mail">
           </div>
           <div class="input-group">
-               <button  name="submit_email"  class="btn">Receive new password by e-mail</button>
+               <button  name="submit_email"  class="btn">تلقي كلمة المرور الجديدة عن طريق البريد الإلكتروني</button>
            </div>
+            <p class="forgetP"><a href="acceuil.php">خروج</a></p>
       </form>
        <?php
          if(isset($_GET['reset']) == "success"){

@@ -93,6 +93,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/712b6663e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
@@ -219,6 +220,16 @@ a:hover {
   color: #070707;
   text-decoration: none;
 }
+.eye{
+  
+  float: right;
+  /*margin-top: -55px;*/
+  position: relative;
+  z-index: 1;
+  cursor:pointer;
+  left:400px;
+  top:-35px;
+}
 @media (max-width: 430px) {
   .container {
     width: 300px;
@@ -300,7 +311,8 @@ a:hover {
            </div>
              <div class="input-group">
                   <label for="username" style="position:relative; left:330px;">: كلمة السر</label>
-               <input type="password" placeholder="mot de passe" name="password" required="required" value="<?php echo $pwd;?>">
+                  <input type="password" placeholder="mot de passe" name="password" id="password" required="required" value="<?php echo $pwd;?>">
+               <span class="eye"><i class="bi bi-eye-slash" id="togglePassword"></i></span>
            </div>
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">حفظ التغيرات</button>
@@ -310,6 +322,18 @@ a:hover {
            
            
          </form>
+     <script type="text/javascript">
+     const togglePassword = document.querySelector('#togglePassword');
+     const password = document.querySelector('#password');
+     togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+});
+    
+         </script>
     </div>
 
 

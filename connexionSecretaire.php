@@ -51,6 +51,8 @@ if(empty($email)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://kit.fontawesome.com/712b6663e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" type="text/css" href="style2.css">
     <title>loginFormS</title>
 </head>
@@ -74,8 +76,21 @@ if(empty($email)){
                <input type="text" name="email" placeholder="username" required="required">
            </div>
            <div class="input-group">
-               <input type="password" placeholder="Password" name="password" required="required">
+               <input type="password" placeholder="Password" name="password" required="required" id="password">
+               <span class="eye"><i class="bi bi-eye-slash" id="togglePassword"></i></span>
            </div>
+           <script type="text/javascript">
+     const togglePassword = document.querySelector('#togglePassword');
+     const password = document.querySelector('#password');
+     togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+});
+    
+         </script>
            <div class="input-group">
                <button name="submit" class="btn">Login</button>
            </div>

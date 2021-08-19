@@ -42,7 +42,7 @@ session_start();
          $session = addslashes(htmlspecialchars($session));
          $loginR=$_SESSION['login'];
          $_SESSION['numApogee']=$numApogee;
-        $sql0 = "INSERT INTO `etudiant`(`numApogee`, `numEtd`, `nom`, `prenom`, `filliere`, `semestre`) VALUES ('$numApogee','$numEtd','$nom','$prenom','$filliere','$optionF')";
+        $sql0 = "INSERT INTO `etudiant`(`numApogee`, `numEtd`, `nom`, `prenom`, `filliere`, `semestre`) VALUES ('$numApogee','$numEtd','$nom','$prenom','$filliere','$optionF') ON DUPLICATE KEY UPDATE numEtd='$numEtd', nom='$nom', prenom='$prenom', filliere='$filliere', semestre='$optionF' ";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
           
@@ -50,7 +50,7 @@ session_start();
             exit();
         }
         else{
-            $sql1 = "INSERT INTO `fraude`(`description`, `anneeUniversitaire`, `session`, `loginR`, `numApogee`) VALUES ('$description','$anneeUnv','$session','$loginR','$numApogee')";
+            $sql1 = "INSERT INTO `fraude`(`description`, `anneeUniversitaire`, `session`, `loginR`, `numApogee`) VALUES ('$description','$anneeUnv','$session','$loginR','$numApogee') ON DUPLICATE KEY UPDATE description='$description',anneeUniversitaire='$anneeUnv', session='$session', loginR='$loginR';";
             $reslt1 = mysqli_query($link,$sql1);
             if(!$reslt1){
              //echo $sql1;

@@ -109,7 +109,15 @@ body {
 .forgetP a:visited {
   color: #469ff1;
 }
-
+.eye {
+  float: right;
+  /*margin-top: -55px;*/
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  left: 300px;
+  top:-40px;
+}
 @media (max-width: 430px) {
   .container {
     width: 300px;

@@ -164,15 +164,16 @@ table tbody tr{
   
    <?php
         
-      $sql1="SELECT etudiant.numApogee, etudiant.numEtd, etudiant.nom, etudiant.prenom, etudiant.filliere, etudiant.semestre, fraude.idFraude, fraude.description, fraude.anneeUniversitaire, fraude.session, fraude.loginR, conseildiscipline.idConseil, conseildiscipline.loginS, conseildiscipline.date, conseildiscipline.PV
+      $sql1="SELECT etudiant.numApogee, etudiant.numEtd, etudiant.nom, etudiant.prenom, etudiant.filliere, etudiant.semestre, fraude.description, fraude.anneeUniversitaire, fraude.session, fraude.loginR, conseildiscipline.loginS, conseildiscipline.date, conseildiscipline.PV
 FROM etudiant 
 INNER JOIN conseildiscipline ON conseildiscipline.numApogee = etudiant.numApogee 
 INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
       WHERE fraude.anneeUniversitaire = '$annUniv'  AND fraude.session = '$session' AND conseildiscipline.date = '$dateC'
-      ORDER BY fraude.idFraude ASC;";
+      ORDER BY etudiant.numEtd ASC;";
           $reslt1=mysqli_query($link, $sql1);
           if(!$reslt1){
-              header("Location: fraude.php?error1=هناك مشكلة ، حاول مرة أخرى");
+            echo $sql1;
+              //header("Location: fraude.php?error1=هناك مشكلة ، حاول مرة أخرى");
               exit();
           }
           else{
