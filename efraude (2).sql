@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 19 août 2021 à 18:38
+-- Généré le : dim. 05 sep. 2021 à 18:02
 -- Version du serveur : 10.4.19-MariaDB
 -- Version de PHP : 8.0.7
 
@@ -91,7 +91,6 @@ INSERT INTO `filliere` (`codeF`, `lib_fill`) VALUES
 (5, 'Licence D\'études Fondamentales en Sciences Economiques et Gestion'),
 (6, 'Licence D\'études Fondamentales en Droit Français'),
 (7, 'الاجازة في القانون بالعربية'),
-(8, 'Licence D\'études Fondamentales en Sciences Economiques et Gestion'),
 (9, 'Licence D\'études Fondamentales D\'exellence en Sciences de Gestion'),
 (10, 'Licence D\'études Fondamentales D\'exellence en Sciences de Politique'),
 (11, 'Licence Professionnelle en Management PME-PMI'),
@@ -242,7 +241,7 @@ ALTER TABLE `secretaire`
 -- AUTO_INCREMENT pour la table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Contraintes pour les tables déchargées

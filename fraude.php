@@ -24,18 +24,18 @@
                 $numApogee=$dataQ['numApogee'];
                 
                 $date=addslashes(htmlspecialchars($_POST['date']));
-      $loginS=$_SESSION['login'];
+      $loginS=$_SESSION['loginS'];
       $_SESSION['date']=$date;
     
       $sql0 = "INSERT INTO `conseildiscipline`(`loginS`, `date`, `PV`, `numApogee`) VALUES ('$loginS','$date','الملف في طور المعالجة','$numApogee') ON DUPLICATE KEY UPDATE loginS='$loginS', date='$date', PV='الملف في طور المعالجة';";
         $reslt0 = mysqli_query($link,$sql0);
         if(!$reslt0){
-            
+           
             header("Location: fraude.php?inscrire=حدث خطأ أثناء الإدراج ، حاول مرة أخرى");
             exit();
         }
         else{
-             
+            
            $_SESSION['numApogee']=$numApogee;
             header("Location: listeSansPV.php?id=$numApogee");
             exit();

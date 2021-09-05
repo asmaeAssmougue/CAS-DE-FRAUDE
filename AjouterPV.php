@@ -24,7 +24,7 @@
            exit();
        }
        else{
-          header("Location: AjouterPV.php?succes=تمت اضافة التقرير بنجاح");
+          header("Location: AjouterPV.php?succes=تم اضافة التقرير بنجاح");
            exit();
        }
        }
@@ -77,7 +77,7 @@
           <div class="input-group" style="display:flex; flex-direction: row;">
 
                <label for="numApogee" style="position:relative; left: 350px;">:رقم الطالب</label>
-               <input type="text" name="numApogee" placeholder="Numero Apogee" id="numApogee">
+               <input type="text" name="numApogee" placeholder="Numero Apogee/CNE/CIN" id="numApogee">
            </div>
           
           

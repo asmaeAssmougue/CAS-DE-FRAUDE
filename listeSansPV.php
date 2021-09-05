@@ -172,8 +172,8 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
       ORDER BY etudiant.numEtd ASC;";
           $reslt1=mysqli_query($link, $sql1);
           if(!$reslt1){
-            echo $sql1;
-              //header("Location: fraude.php?error1=هناك مشكلة ، حاول مرة أخرى");
+          
+              header("Location: fraude.php?error1=هناك مشكلة ، حاول مرة أخرى");
               exit();
           }
           else{

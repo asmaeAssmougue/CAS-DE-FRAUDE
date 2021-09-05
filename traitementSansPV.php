@@ -23,7 +23,7 @@
                     exit();
             }
       $date=addslashes(htmlspecialchars($_POST['date']));
-      $loginS=$_SESSION['login'];
+      $loginS=$_SESSION['loginS'];
     
       $_SESSION['session']=$session;
       $_SESSION['anneeUnv']=$anneeUnv;

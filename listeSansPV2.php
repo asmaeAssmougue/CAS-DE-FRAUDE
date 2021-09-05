@@ -49,9 +49,6 @@ section {
 }
 #logo {
   position: absolute;
- /* left: 100px;
-  top: 0px;
-  /*width: 500px;*/
   height: 500px;
   margin-bottom:40px;
   text-align:center;

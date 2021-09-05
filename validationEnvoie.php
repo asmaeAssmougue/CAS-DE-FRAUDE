@@ -40,7 +40,7 @@ session_start();
          $description = addslashes(htmlspecialchars($description));
          $anneeUnv = addslashes(htmlspecialchars($anneeUnv));
          $session = addslashes(htmlspecialchars($session));
-         $loginR=$_SESSION['login'];
+         $loginR=$_SESSION['loginR'];
          $_SESSION['numApogee']=$numApogee;
         $sql0 = "INSERT INTO `etudiant`(`numApogee`, `numEtd`, `nom`, `prenom`, `filliere`, `semestre`) VALUES ('$numApogee','$numEtd','$nom','$prenom','$filliere','$optionF') ON DUPLICATE KEY UPDATE numEtd='$numEtd', nom='$nom', prenom='$prenom', filliere='$filliere', semestre='$optionF' ";
         $reslt0 = mysqli_query($link,$sql0);
@@ -53,8 +53,8 @@ session_start();
             $sql1 = "INSERT INTO `fraude`(`description`, `anneeUniversitaire`, `session`, `loginR`, `numApogee`) VALUES ('$description','$anneeUnv','$session','$loginR','$numApogee') ON DUPLICATE KEY UPDATE description='$description',anneeUniversitaire='$anneeUnv', session='$session', loginR='$loginR';";
             $reslt1 = mysqli_query($link,$sql1);
             if(!$reslt1){
-             //echo $sql1;
-            header("Location: enregistrerFraude.php?fraudeSave=حدث خطأ أثناء الإدراج ، حاول مرة أخرى");
+         
+            header("Location: enregistrerFraude.php?fraudeSave=حدث خطأ أثناء الإدراج ، حاول مرة أخرى$sql1");
             exit();
         }else{
           

@@ -27,7 +27,8 @@ if(empty($email)){
         if($row['login'] == $email && $row['password'] == $pass){
             $_SESSION['password'] = $row['password'];
            
-            $_SESSION['login'] = $row['login'];
+            $_SESSION['loginR'] = $row['login'];
+          
             header("Location: enregistrerFraude.php?succes= مرحبًا بك ");
             exit();
         }
@@ -43,6 +44,7 @@ if(empty($email)){
 }
 else{
     if(isset($_POST['retour'])){
+        
         header('Location: acceuil.php?success=1');
         exit();
     }
@@ -66,6 +68,13 @@ else{
      <div class="container">
          <form action="" method="POST" class="login-email">
              <p class="login-text" style="font-size:2rem; font-weight: 800;">Login</p>
+              <?php
+           if(isset($_GET["newpwd"])){
+               if($_GET["newpwd"] == "passwordupdated"){
+                   echo '<p class="success">تم إعادة تعيين كلمة المرور الخاصة بك</p>';
+               }
+           }
+           ?>
           <?php if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p>
@@ -101,13 +110,7 @@ else{
                <button name="submit" class="btn">Login</button>
               
            </div>
-           <?php
-           if(isset($_GET["newpwd"])){
-               if($_GET["newpwd"] == "passwordupdated"){
-                   echo '<p class="success">تم إعادة تعيين كلمة المرور الخاصة بك</p>';
-               }
-           }
-           ?>
+          
            <p class="forgetP"><a href="resetPasswordR.php">نسيت كلمة المرور ؟</a></p>
                 <p class="forgetP"><a href="acceuil.php">خروج</a></p>
          </form>

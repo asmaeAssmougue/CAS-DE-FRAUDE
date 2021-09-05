@@ -1,7 +1,9 @@
 <?php
 
  include("connexion.php");
- session_start();
+ session_start(); // ready to go!
+
+
   $compteDel=$_SESSION['compteDel'];
   $user=$_SESSION['username'];
   
@@ -223,7 +225,7 @@ a:hover {
 .eye{
   
   float: right;
-  /*margin-top: -55px;*/
+ 
   position: relative;
   z-index: 1;
   cursor:pointer;

@@ -2,8 +2,8 @@
 <?php
  
  include("connexion.php");
- session_start();
 
+ session_start(); 
 
 ?>
 
@@ -98,10 +98,6 @@
                <?php
                   }
                   ?>
-                  
-
-
-
                   
             </select>
            </div>

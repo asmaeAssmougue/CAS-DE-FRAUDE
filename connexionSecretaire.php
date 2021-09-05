@@ -27,7 +27,8 @@ if(empty($email)){
         if($row['login'] == $email && $row['password'] == $pass){
             $_SESSION['password'] = $row['password'];
            
-            $_SESSION['login'] = $row['login'];
+            $_SESSION['loginS'] = $row['login'];
+         
             header("Location: modifierFraude.php?succes=1");
             exit();
         }
