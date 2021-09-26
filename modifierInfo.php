@@ -2,9 +2,7 @@
 <?php
  
  include("connexion.php");
-
- session_start(); // ready to go!
-
+ session_start();
   $numApogee=$_SESSION['numApogee'];
         $sql1="SELECT etudiant.numApogee, etudiant.numEtd, etudiant.nom, etudiant.prenom, etudiant.filliere, etudiant.semestre, fraude.description, fraude.anneeUniversitaire, fraude.session, fraude.loginR, conseildiscipline.loginS, conseildiscipline.date, conseildiscipline.PV
         FROM etudiant 

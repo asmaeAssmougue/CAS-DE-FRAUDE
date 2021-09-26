@@ -1,14 +1,20 @@
 <?php
 
  include("connexion.php");
-
- session_start(); // ready to go!
-
+ session_start();
  $dateC=$_SESSION['dateC'];
  $session=$_SESSION['session'];
  $annUniv=$_SESSION['annUniv'];
  $numApogee=$_SESSION['numApogee'];
  
+$t=time();
+if (isset($_SESSION['logged']) && ($t - $_SESSION['logged'] > 1400)) {
+    session_destroy();
+    session_unset();
+    header('location: rechercherEtud.php');
+}else {
+    $_SESSION['logged'] = time();
+} 
 if(isset($_POST['delete'])){
             
             $queryDelete="DELETE FROM `etudiant` WHERE numApogee = '$numApogee';";

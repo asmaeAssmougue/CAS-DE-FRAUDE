@@ -6,14 +6,15 @@ if(isset($_POST['submit_password']) && !empty($_POST['username']) && !empty($_PO
 {
   $user=$_POST['username'];
   $pass=$_POST['password'];
-  $query1="UPDATE `responsablebureauexam` SET `password`='$pass' WHERE login = '$user'";
+  $query1="UPDATE `admin` SET `password`='$pass' WHERE login = '$user'";
   $select1=mysqli_query($link,$query1);
   if($select1){
-      header("Location: connexionResponsable.php?newpwd=passwordupdated");
+      
+      header("Location: adminAute.php?newpwd=passwordupdated");
       exit();
   }
   else{
-      header("Location: resetPasswordR.php?echec=هناك مشكلة ، حاول مرة أخرى");
+      header("Location: resetPasswordA.php?echec=هناك مشكلة ، حاول مرة أخرى");
       exit();
   }
 }
@@ -22,7 +23,7 @@ else if($_GET['key'] && $_GET['user'])
   $email=$_GET['key'];
  
   $username=$_GET['user'];
-  $select="SELECT * FROM `responsablebureauexam` WHERE login = '$username'";
+  $select="SELECT * FROM `admin` WHERE login = '$username'";
   $reslt=mysqli_query($link, $select);
  
   if(mysqli_num_rows($reslt)==1)
@@ -41,21 +42,20 @@ else if($_GET['key'] && $_GET['user'])
      <script src="https://kit.fontawesome.com/712b6663e3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="style3.css">
-    <title>UpdatePasswordR</title>
+    <title>UpdatePasswordA</title>
 </head>
 <body>
     <section>
      
                <form action="" method="post" class="container">
-                   <p class="login-text" style="font-size:1.3rem; font-weight: 680;">تعيين كلمة المرور</p>
+                <p class="login-text" style="font-size:1.3rem; font-weight: 680;">تعيين كلمة المرور</p>
                   
                    <div class="input-group" style="display:flex; flex-direction: row;">
                    
                     <input type="password" placeholder="new Password" name='password' id="password" required="required">
                     <span class="eye"><i class="bi bi-eye-slash" id="togglePassword"></i></span>
                    </div>
-                   
-                <script type="text/javascript">
+                    <script type="text/javascript">
             const togglePassword = document.querySelector('#togglePassword');
             const password = document.querySelector('#password');
             togglePassword.addEventListener('click', function (e) {
@@ -70,21 +70,23 @@ else if($_GET['key'] && $_GET['user'])
                    <input type="hidden" name="username" value="<?php echo $username;?>">
                    </div>
                    <div class="input-group" style="display:flex; flex-direction: row;">
-                   <button name="submit_password" class="btn">إرسال</button>
+                    <button name="submit_password" class="btn">إرسال</button>
                     </div>
+                   
                      <p class="forgetP"><a href="acceuil.php">خروج</a></p>    
-    
+                 
+               
                </form>
 
  
     </section>
 </body>
 </html>
-         
+      
       <?php
   }else{
-     header("Location: resetPasswordR.php?echec3=المعلومات غير صحيحة");
+     header("Location: resetPasswordA.php?echec3=المعلومات غير صحيحة");
       exit();
   } 
-}
+} 
 ?>

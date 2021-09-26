@@ -10,13 +10,13 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style4.css">
-    <title>ResetPassword</title>
+    <title>ResetPasswordA</title>
 </head>
 <body>
     <section class="container">
       
       
-      <form action="send_linkR.php" method="post">
+      <form action="send_linkA.php" method="post">
            
 
           <h1  class="login">إعادة تعيين كلمة المرور</h1>

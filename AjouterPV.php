@@ -2,9 +2,10 @@
  
  include("connexion.php");
  session_start();
+ $loginS = $_GET['loginS'];
   if(isset($_POST['submit'])){
       if(empty($_POST['numApogee']) || empty($_POST['PV'])){     
-    header("Location: AjouterPV.php?error=المرجو ملىء  جميع الخانات");
+    header("Location: AjouterPV.php?error=المرجو ملىء  جميع الخانات&loginS=$loginS");
     exit();       
    }
    else{
@@ -12,7 +13,7 @@
        $queryS="SELECT * FROM `etudiant` WHERE numApogee = '$numApogee';";
        $resltS=mysqli_query($link, $queryS);
        if(mysqli_num_rows($resltS)==0){
-            header("Location: AjouterPV.php?error1=رقم الطالب غير موجود ، يرجى المحاولة مرة أخرى");
+            header("Location: AjouterPV.php?error1=رقم الطالب غير موجود ، يرجى المحاولة مرة أخرى&loginS=$loginS");
            exit();
        }
        else{
@@ -20,11 +21,11 @@
        $sql2="UPDATE `conseildiscipline` SET `PV`='$PV'  WHERE numApogee='$numApogee';";
        $reslt=mysqli_query($link, $sql2);
        if(!$reslt){
-           header("Location: AjouterPV.php?update=هناك مشكلة ، حاول مرة أخرى");
+           header("Location: AjouterPV.php?update=هناك مشكلة ، حاول مرة أخرى&loginS=$loginS");
            exit();
        }
        else{
-          header("Location: AjouterPV.php?succes=تم اضافة التقرير بنجاح");
+          header("Location: AjouterPV.php?succes=تم اضافة التقرير بنجاح&loginS=$loginS");
            exit();
        }
        }
@@ -110,7 +111,7 @@
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">حفظ</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >الغاء</button>
-               <button type="submit" class="btn btn-primary"><a href="modifierFraude.php">رجوع</a></button>
+               <button type="submit" class="btn btn-primary"><a href="modifierFraude.php?loginS=<?php echo $loginS; ?>">رجوع</a></button>
            </div>
            
            

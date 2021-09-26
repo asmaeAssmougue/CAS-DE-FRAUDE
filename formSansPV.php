@@ -2,6 +2,38 @@
  
  include("connexion.php");
  session_start();
+ $loginS = $_GET['loginS'];
+ 
+     if(isset($_POST['submit'])){
+    if(empty($_POST['anneeUnv'])||empty($_POST['session'])||empty($_POST['date'])){
+    
+        header("Location: formSansPV.php?error=المرجو ملىء  جميع الخانات&loginS=$loginS");
+        exit(); 
+    }else{
+      $anneeUnv=addslashes(htmlspecialchars($_POST['anneeUnv']));
+      $session=addslashes(htmlspecialchars($_POST['session']));
+      switch ($session) {
+                case 'hiverAutomne':
+                    $session="خريف-شتاء";
+                    break;
+                case 'etePrint':
+                    $session="ربيع-صيف";
+                    break;
+               
+                default:
+                    header("Location: formSansPV.php?error1=المرجو الاختيار من الائحة&loginS=$loginS");
+                    exit();
+            }
+      $date=addslashes(htmlspecialchars($_POST['date']));
+      //$loginS=$_SESSION['loginS'];
+    
+      $_SESSION['session']=$session;
+      $_SESSION['anneeUnv']=$anneeUnv;
+      $_SESSION['date']=$date;
+      header("Location: listeSansPV2.php?succes=1&loginS=$loginS");
+      exit();  
+ }
+}
  
 ?>
 
@@ -20,7 +52,7 @@
   </head>
   <body>
     <div class="container">
-        <form action="traitementSansPV.php" method="POST" class="fraude">
+        <form action="" method="POST" class="fraude">
           <div class="logo">
                   <img src="images/logo3.png" alt="logo">
           </div>
@@ -58,7 +90,7 @@
            <div class="input-group">
                <button type="submit" class="btn btn-primary" name="submit">حفظ</button>
                <button  class="btn waves-effect waves-light reset" type="reset" value="Reset" >الغاء</button>
-               <button type="submit" class="btn btn-primary"><a href="modifierFraude.php">رجوع</a></button>
+               <button type="submit" class="btn btn-primary"><a href="modifierFraude.php?loginS=<?php echo $loginS; ?>">رجوع</a></button>
            </div>
            
            

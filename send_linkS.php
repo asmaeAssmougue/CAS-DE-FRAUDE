@@ -8,13 +8,13 @@ if(isset($_POST['submit_email']) && !empty($_POST['email']) && !empty($_POST['us
 {
   $email = $_POST['email'];
   $username = $_POST['username'];
-  $select="SELECT * FROM `responsablebureauexam` WHERE login = '$username'";
+  $select="SELECT * FROM `secretaire` WHERE login = '$username'";
   $reslt=mysqli_query($link, $select);
  
   if(mysqli_num_rows($reslt) === 1)
   {
   
-      $link="<a href='www.eFraude.com/CASDEFRAUDE/resetR.php?key=".$email."&user=".$username."'>Clicker pour récupérer le mot de passe</a>";
+      $link="<a href='www.eFraude.com/CASDEFRAUDE/resetS.php?key=".$email."&user=".$username."'>Clicker pour récupérer le mot de passe</a>";
     
    
         require_once "PHPMailer/PHPMailer.php";
@@ -42,10 +42,10 @@ $mail = new PHPMailer();
         
        if(!$mail->Send()) {
         $error = $mail->ErrorInfo;
-        header("Location:resetPasswordR.php?errorSend=حدث خطأالمرجو المحاولة$error");
+        header("Location:resetPasswordS.php?errorSend=حدث خطأالمرجو المحاولة$error");
         exit();
      } else {
-         header("Location:resetPasswordR.php?succes=تم إرسال بريد إلكتروني لاستعادة كلمة المرور ، تحقق من بريدك الإلكتروني");
+         header("Location:resetPasswordS.php?succes=تم إرسال بريد إلكتروني لاستعادة كلمة المرور ، تحقق من بريدك الإلكتروني");
          exit();
      }
  
@@ -53,12 +53,12 @@ $mail = new PHPMailer();
    
     }
      else{
-      header("Location:resetPasswordR.php?echec2=المعلومات غير صحيحة");
+      header("Location:resetPasswordS.php?echec2=المعلومات غير صحيحة");
       exit();
   }
 
 }else{
-   header("Location:resetPasswordR.php?error=emptyField");
+   header("Location:resetPasswordS.php?error=emptyField");
   exit();
 }
 ?>

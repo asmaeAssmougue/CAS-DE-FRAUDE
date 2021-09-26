@@ -27,9 +27,9 @@ if(empty($email)){
         if($row['login'] == $email && $row['password'] == $pass){
             $_SESSION['password'] = $row['password'];
            
-            $_SESSION['loginR'] = $row['login'];
-          
-            header("Location: enregistrerFraude.php?succes= مرحبًا بك ");
+            //$_SESSION['loginR'] = $row['login'];
+            $loginR = $row['login'];
+            header("Location: enregistrerFraude.php?succes='مرحبًا بك'&loginR=$loginR");
             exit();
         }
         }
@@ -74,16 +74,16 @@ else{
                    echo '<p class="success">تم إعادة تعيين كلمة المرور الخاصة بك</p>';
                }
            }
-           ?>
-          <?php if(isset($_GET['error'])){ ?>
+           
+          if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-            <?php if(isset($_GET['error1'])){ ?>
+            <?php } 
+            if(isset($_GET['error1'])){ ?>
           
           <p class="error"><?php echo $_GET['error1']; ?></p>
-            <?php } ?>
-            <?php if(isset($_GET['error2'])){ ?>
+            <?php } 
+             if(isset($_GET['error2'])){ ?>
           
           <p class="error"><?php echo $_GET['error2']; ?></p>
             <?php } ?>

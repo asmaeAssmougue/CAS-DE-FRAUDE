@@ -2,7 +2,8 @@
   include("connexion.php");
 
 session_start();
-?>
+$loginS = $_GET['loginS'];
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +72,7 @@ session_start();
                           $reslt2 = mysqli_query($link, $sql2);
                            if(!$reslt2){
                           
-                            header('Location: modifierFraude.php?error=هناك مشكلة ، حاول مرة أخرى');
+                            header("Location: modifierFraude.php?error=هناك مشكلة ، حاول مرة أخرى&loginS=$loginS");
                             exit();
                            }
                            else{ 
@@ -79,7 +80,7 @@ session_start();
                              while($data1=mysqli_fetch_assoc($reslt2)){
                            ?>
                           <tr>
-                            <td style="text-align:right;"><a href="fraude.php?id=<?php echo $fetch['id']; ?>" alt="">إضافة</a></td>
+                            <td style="text-align:right;"><a href="fraude.php?id=<?php echo $fetch['id']; ?>&loginS=<?php echo $loginS; ?>" alt="">إضافة</a></td>
                             <td style="width: 450px;text-align:right;"><?php echo $data1['filliere']; ?></td>
                             <td style="width: 100px;text-align:right;"><?php echo $data1['numApogee']; ?></td>
                             <td style="width: 250px;text-align:right;"><?php echo $data1['prenom']." ".$data1['nom']; ?></td>
@@ -95,15 +96,15 @@ session_start();
                
 
                 else{
-                  echo '<p class="succes">ليس لديك اشعار جديد، تفقد اللائحة بدون  محضر</p><div class="dec"><a href="formSansPV.php" class="button">فتح</a></div>';
+                  echo "<p class='succes'>ليس لديك اشعار جديد، تفقد اللائحة بدون  محضر</p><div class='dec'><a href='formSansPV.php?loginS=$loginS;' class='button'>فتح</a></div>";
                 }    
   ?>
   </table>
            </div>
      
            <div class="input-group">
-               <button type="button" class="btn btn-danger"><a href="listeFraudePV.php">فتح اللائحة</a></button>
-             <button type="button" class="btn btn-info"><a href="AjouterPV.php">اضافة محضر</a></button>
+               <button type="button" class="btn btn-danger"><a href="listeFraudePV.php?&loginS=<?php echo $loginS; ?>">فتح اللائحة</a></button>
+             <button type="button" class="btn btn-info"><a href="AjouterPV.php?&loginS=<?php echo $loginS; ?>">اضافة محضر</a></button>
              <button type="button" class="btn btn-danger"><a href="deconnexion.php">خروج</a></button>
            </div>
           

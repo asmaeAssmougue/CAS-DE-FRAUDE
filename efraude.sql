@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 05 sep. 2021 à 18:02
+-- Généré le : jeu. 09 sep. 2021 à 00:11
 -- Version du serveur : 10.4.19-MariaDB
 -- Version de PHP : 8.0.7
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`login`, `password`) VALUES
 ('admin', 'admin0123456789'),
-('assmougue', 'assmougue0123456789');
+('assmougueAsmae', 'assmougue0123456789');
 
 -- --------------------------------------------------------
 
@@ -241,7 +241,7 @@ ALTER TABLE `secretaire`
 -- AUTO_INCREMENT pour la table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Contraintes pour les tables déchargées

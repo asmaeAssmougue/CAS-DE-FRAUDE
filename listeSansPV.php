@@ -2,6 +2,7 @@
  
  include("connexion.php");
  session_start();
+ $loginS = $_GET['loginS'];
  $dateC=$_SESSION['date'];
  $numApogee = $_SESSION['numApogee'];
 ?>
@@ -173,12 +174,12 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
           $reslt1=mysqli_query($link, $sql1);
           if(!$reslt1){
           
-              header("Location: fraude.php?error1=هناك مشكلة ، حاول مرة أخرى");
+              header("Location: fraude.php?error1=هناك مشكلة ، حاول مرة أخرى&loginS=$loginS");
               exit();
           }
           else{
             if(mysqli_num_rows($reslt1)==0){
-              header("Location: fraude.php?error=المعلومات غير صحيحة ، يرجى المحاولة مرة أخرى");
+              header("Location: fraude.php?error=المعلومات غير صحيحة ، يرجى المحاولة مرة أخرى&loginS=$loginS");
               exit();
             }
             else{
@@ -226,7 +227,7 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
             <?php } ?>
            
        <button onclick="window.print();" class="btn btn-primary" id="printPageButton">طبع</button>
-       <button type="submit" class="btn btn-primary"><a href="modifierFraude.php" id="retour">خروج</a></button>
+       <button type="submit" class="btn btn-primary"><a href="modifierFraude.php?loginS=<?php echo $loginS; ?>" id="retour">خروج</a></button>
       
       </div>
     </section>

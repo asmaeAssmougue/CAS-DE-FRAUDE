@@ -48,7 +48,7 @@ session_start();
          $description = addslashes(htmlspecialchars($description));
          $anneeUnv = addslashes(htmlspecialchars($anneeUnv));
          $session = addslashes(htmlspecialchars($session));
-         $loginR=$_SESSION['loginR'];
+         $loginR=$_SESSION['login'];
          $_SESSION['numApogee']=$numApogee;
         $sql0 = "UPDATE `etudiant` SET `numApogee` = '$numApogee', `numEtd` = '$numEtd', `nom` = '$nom', `prenom` = '$prenom', `filliere` = '$filliere', `semestre` = '$optionF'  WHERE numApogee = '$apo';";
         $reslt0 = mysqli_query($link,$sql0);

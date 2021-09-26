@@ -1,6 +1,7 @@
 <?php 
    include("connexion.php");
    session_start();
+   $loginS = $_GET['loginS'];
           $session=$_SESSION['session'];
           $annUniv=$_SESSION['anneeUnv'];
           $dateC=$_SESSION['date'];
@@ -162,12 +163,12 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
           $reslt1=mysqli_query($link, $sql1);
           if(!$reslt1){
            
-              header("Location: formSansPV.php?error1=هناك مشكلة ، حاول مرة أخرى");
+              header("Location: formSansPV.php?error1=هناك مشكلة ، حاول مرة أخرى&loginS=$loginS");
               exit();
           }
           else{
             if(mysqli_num_rows($reslt1)==0){
-              header("Location: formSansPV.php?error=المعلومات غير صحيحة ، يرجى المحاولة مرة أخرى");
+              header("Location: formSansPV.php?error=المعلومات غير صحيحة ، يرجى المحاولة مرة أخرى&loginS=$loginS");
               exit();
             }
             else{
@@ -215,7 +216,7 @@ INNER JOIN fraude ON fraude.numApogee = etudiant.numApogee
             <?php } ?>
      
        <button onclick="window.print();" class="btn btn-primary" id="printPageButton">طبع</button>
-       <button type="submit" class="btn btn-primary"><a href="formSansPV.php" id="retour">رجوع</a></button>
+       <button type="submit" class="btn btn-primary"><a href="formSansPV.php?loginS=<?php echo $loginS; ?>" id="retour">رجوع</a></button>
       
       </div>
     </section> 

@@ -27,9 +27,9 @@ if(empty($email)){
         if($row['login'] == $email && $row['password'] == $pass){
             $_SESSION['password'] = $row['password'];
            
-            $_SESSION['loginS'] = $row['login'];
-         
-            header("Location: modifierFraude.php?succes=1");
+           // $_SESSION['loginS'] = $row['login'];
+            $loginS = $row['login'];
+            header("Location: modifierFraude.php?succes=1&loginS=$loginS");
             exit();
         }
         }
@@ -61,15 +61,22 @@ if(empty($email)){
      <div class="container">
          <form action="" method="POST" class="login-email">
           <p class="login-text" style="font-size:2rem; font-weight: 800;">Login</p>
-          <?php if(isset($_GET['error'])){ ?>
+          <?php
+           if(isset($_GET["newpwd"])){
+               if($_GET["newpwd"] == "passwordupdated"){
+                   echo '<p class="success">تم إعادة تعيين كلمة المرور الخاصة بك</p>';
+               }
+           }
+           
+          if(isset($_GET['error'])){ ?>
           
           <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-            <?php if(isset($_GET['error1'])){ ?>
+            <?php } 
+            if(isset($_GET['error1'])){ ?>
           
           <p class="error"><?php echo $_GET['error1']; ?></p>
-            <?php } ?>
-            <?php if(isset($_GET['error2'])){ ?>
+            <?php } 
+             if(isset($_GET['error2'])){ ?>
           
           <p class="error"><?php echo $_GET['error2']; ?></p>
             <?php } ?>
@@ -95,14 +102,8 @@ if(empty($email)){
            <div class="input-group">
                <button name="submit" class="btn">Login</button>
            </div>
-           <?php
-           if(isset($_GET["newpwd"])){
-               if($_GET["newpwd"] == "passwordupdated"){
-                    echo '<p class="success">تم إعادة تعيين كلمة المرور الخاصة بك</p>';
-               }
-           }
-           ?>
-           <p class="forgetP"><a href="resetPasswordR.php">نسيت كلمة المرور ؟</a></p>
+           
+           <p class="forgetP"><a href="resetPasswordS.php">نسيت كلمة المرور ؟</a></p>
             <p class="forgetP"><a href="acceuil.php">خروج</a></p>
          </form>
      </div>
